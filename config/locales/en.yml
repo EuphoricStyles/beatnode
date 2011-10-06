@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      size_too_big: "File size can't exceed %{file_size}"

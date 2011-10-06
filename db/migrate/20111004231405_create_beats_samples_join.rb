@@ -5,7 +5,7 @@ class CreateBeatsSamplesJoin < ActiveRecord::Migration
       t.references :sample, :null => false
     end
 
-    add_index 'beats_samples', [ :beat_id, :sample_id ], :unique => true
+    add_index 'beats_samples', [ :beat_id, :sample_id ]
   end
 
   def down

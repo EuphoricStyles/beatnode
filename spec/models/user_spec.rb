@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before :each do
+    @user = User.make! :email => "test@test.com"
+  end
+
+  it "has a name" do
+    @user.email.should == "test@test.com"
+  end
 end

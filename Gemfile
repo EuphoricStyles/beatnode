@@ -22,6 +22,10 @@ group :development do
   gem 'pry-rails'
 end
 
+group :test do
+  gem 'machinist', '>= 2.0.0.beta2'
+end
+
 gem 'jquery-rails'
 
 # Use unicorn as the web server
@@ -35,4 +39,7 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'omniauth'
 gem 'rspec-rails', :groups => [ :test, :development ]
-gem 'paperclip'
+#gem 'paperclip'
+gem 'mime-types'
+gem 'carrierwave'
+gem 'devise'
