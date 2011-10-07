@@ -34,3 +34,13 @@ end
 SampleBorrow.blueprint do
   # Attributes here
 end
+
+Comment.blueprint do
+  b = <<-EOB
+This is a multiline comment.
+
+  It has some weird whitespace and stuff.
+  EOB
+
+  body { b }
+end

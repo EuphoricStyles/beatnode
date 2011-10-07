@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
   has_many :samples, :dependent => :destroy
 
   has_many :sample_borrows
-  has_many :borrowed_samples, :through => :sample_borrows, :class_name => "Sample", :foreign_key => "sample_id"
+  has_many :borrowed_samples, :through => :sample_borrows, :source => :sample
 end

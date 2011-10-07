@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -37,7 +37,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 gem 'therubyracer'
-gem 'omniauth'
+#gem 'omniauth'
 gem 'rspec-rails', :groups => [ :test, :development ]
 #gem 'paperclip'
 gem 'mime-types'

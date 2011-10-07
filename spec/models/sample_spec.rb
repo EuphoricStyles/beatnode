@@ -4,7 +4,7 @@ describe Sample do
   before :each do
     @owner = User.make! 
     @borrower = User.make!
-    @sample = Sample.make! :user => @owner
+    @sample = @owner.samples.build :title => "Some sample, yall", :description => "posted by @owner"
   end
 
   after :each do
@@ -12,8 +12,8 @@ describe Sample do
   end
 
   it "has a title, description, and audio attachment" do
-    @sample.title.should =~ /some sample/i
-    @sample.description.should =~ /sample sample sample/i
+    @sample.title.should == "Some sample, yall"
+    @sample.description.should == "posted by @owner"
     @sample.audio.should_not be_nil
   end
 
