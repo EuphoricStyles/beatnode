@@ -9,7 +9,8 @@ require 'machinist/active_record'
 #   end
 #
 User.blueprint do
-  email { "test_email.#{sn}@gmail.com" }
+  username { "testuser-#{sn}" }
+  email { "test_email#{sn}@gmail.com" }
   password { "password" }
   password_confirmation { "password" }
 end
@@ -24,4 +25,12 @@ Sample.blueprint do
   title { "some sample-#{sn}" }
   description { "sample sample sample #{sn}." }
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
+end
+
+SampleUse.blueprint do
+  # Attributes here
+end
+
+SampleBorrow.blueprint do
+  # Attributes here
 end

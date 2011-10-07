@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Beat do
   before :each do
-    @creator = User.make!
-    @beat = Beat.make! :creator => @creator
+    @user = User.make!
+    @beat = Beat.make! :user => @creator
   end
 
   after :each do
@@ -17,7 +17,7 @@ describe Beat do
   end
 
   it "has a creator" do
-    @beat.creator.should == @creator
+    @beat.user.should == @creator
   end
 
   it "rejects large file sizes" do

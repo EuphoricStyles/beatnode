@@ -4,7 +4,7 @@ describe Sample do
   before :each do
     @owner = User.make! 
     @borrower = User.make!
-    @sample = Sample.make! :owner => @owner
+    @sample = Sample.make! :user => @owner
   end
 
   after :each do
@@ -18,7 +18,7 @@ describe Sample do
   end
 
   it "has an owner" do
-    @sample.owner.should == @owner
+    @sample.user.should == @owner
   end
 
   it "rejects large file sizes" do
@@ -27,9 +27,5 @@ describe Sample do
 
   it "rejects invalid extensions" do
     expect { Beat.make!(:audio => open("#{Rails.root}/data/audio/big_audio.m4a")) }.to raise_error(ActiveRecord::RecordInvalid)
-  end
-
-  it "gets borrowed" do
-    pending "implement borrowing"
   end
 end

@@ -5,8 +5,10 @@ class Beat < ActiveRecord::Base
 
   mount_uploader :audio, AudioUploader
 
-  belongs_to :creator, :class_name => "User"
-  has_and_belongs_to_many :samples
+  belongs_to :user
+
+  has_many :sample_uses
+  has_many :samples, :through => :sample_uses
   
   validates_presence_of :title
   validates_length_of :title, :maximum => 75, :too_long => "That title is too long!"

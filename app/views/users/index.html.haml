@@ -1,3 +1,8 @@
 #users
   - if @users.empty?
     %p No users!
+  - else
+    %ul
+      - @users.each do |user|
+        %li= user.username
+
