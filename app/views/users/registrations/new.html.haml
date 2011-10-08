@@ -1,0 +1,30 @@
+%h2 Sign up
+
+= form_for(:user, :url => user_registration_path) do |f|
+  = devise_error_messages!
+
+  #field
+    = f.label :username
+    %br
+    = f.text_field :username
+
+  #field
+    = f.label :email
+    %br
+    = f.email_field :email
+
+  #field
+    = f.label :password
+    %br
+    = f.password_field :password
+
+  #field
+    = f.label :password_confirmation, "Confirm password"
+    %br
+    = f.password_field :password_confirmation
+
+  #submit
+    = f.submit "Sign up"
+
+  #links
+    = render :partial => "devise/shared/links"
