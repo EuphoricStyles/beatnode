@@ -24,4 +24,9 @@ Many lines.
   it "is polymorphic" do
     [ Beat.new, Sample.new ].each { |c| c.should respond_to :comments }
   end
+
+  it "validates length" do
+    Comment.new(:body => 'a'*601).should_not be_valid
+    Comment.new(:body => 'a'*600).should be_valid
+  end
 end

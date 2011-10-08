@@ -1,7 +1,7 @@
 class CreateBeats < ActiveRecord::Migration
   def change
     create_table :beats do |t|
-      t.string :title, :null => false
+      t.string :name, :null => false
       t.text :description
       t.integer :user_id
 

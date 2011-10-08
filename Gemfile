@@ -24,6 +24,7 @@ end
 
 group :test do
   gem 'machinist', '>= 2.0.0.beta2'
+  gem "capybara"
 end
 
 gem 'jquery-rails'
@@ -36,10 +37,10 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
 gem 'therubyracer'
-#gem 'omniauth'
 gem 'rspec-rails', :groups => [ :test, :development ]
-#gem 'paperclip'
 gem 'mime-types'
 gem 'carrierwave'
 gem 'devise'
+gem 'acts-as-taggable-on', '~>2.1.0'

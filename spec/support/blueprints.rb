@@ -16,13 +16,13 @@ User.blueprint do
 end
 
 Beat.blueprint do
-  title { "some beat-#{sn}" }
+  name { "some beat-#{sn}" }
   description { "beat beat beat #{sn}." }
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
 end
 
 Sample.blueprint do
-  title { "some sample-#{sn}" }
+  name { "some sample-#{sn}" }
   description { "sample sample sample #{sn}." }
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
 end
