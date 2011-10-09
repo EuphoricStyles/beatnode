@@ -1,11 +1,8 @@
 Beatnode::Application.routes.draw do
 
-  devise_for :users do
-    get "sign_up", :to => "devise/registrations#new", :as => "sign_up"
-    get "sign_in", :to => "devise/sessions#new", :as => "sign_in"
-  end
+  devise_for :users
 
-  resources :users, :only => ["show", "index"]
+  #resources :users, :only => ["show", "index"]
   resources :beats, :samples
 
   root :to => "users#index"

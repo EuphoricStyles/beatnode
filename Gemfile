@@ -24,7 +24,6 @@ end
 
 group :test do
   gem 'machinist', '>= 2.0.0.beta2'
-  gem 'capybara'
 end
 
 gem 'jquery-rails'
@@ -40,6 +39,8 @@ gem 'jquery-rails'
 
 gem 'therubyracer'
 gem 'rspec-rails', :groups => [ :test, :development ]
+gem 'capybara', :groups => [ :test, :development ]
+gem 'database_cleaner', :groups => [ :test, :development ]
 gem 'mime-types'
 gem 'carrierwave'
 gem 'devise'

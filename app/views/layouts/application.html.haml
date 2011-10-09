@@ -6,7 +6,6 @@
   = javascript_include_tag "application"
   = csrf_meta_tags
 %body
-  = render "shared/user_nav" unless request.path == "/sign_up"
   %p.class= notice
   %p.alert= alert
   = yield
