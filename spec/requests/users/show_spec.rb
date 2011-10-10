@@ -6,7 +6,7 @@ describe "showing a user" do
   end
 
   it "routes from /:username" do
-    visit "/jimjamz"
+    visit user_path(@user.id)
     page.should have_content "One upon a time!"
   end
 end

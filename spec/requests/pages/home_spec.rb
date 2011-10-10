@@ -6,12 +6,11 @@ describe "home page" do
   end
 
   it "shows user if user signed in" do
-    visit "/sign_in"
+    visit new_user_session_path
     fill_in "Email", :with => "test@example.com"
     fill_in "Password", :with => "password"
     click_button "Sign in"
-    visit "/"
-    page.should have_content "testuser"
+    page.should have_content "Home for testuser"
   end
 
   it "redirects to sign_in page if no one signed in" do
