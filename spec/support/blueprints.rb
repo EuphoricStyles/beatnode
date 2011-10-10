@@ -11,6 +11,11 @@ require 'machinist/active_record'
 User.blueprint do
   username { "testuser-#{sn}" }
   email { "test_email#{sn}@gmail.com" }
+  bio { <<-EOB
+  one time i made a beat and from then on i made beats.
+  Once i made a beat about making beats!
+  EOB
+  }
   password { "password" }
   password_confirmation { "password" }
 end

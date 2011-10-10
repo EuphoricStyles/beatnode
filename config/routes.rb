@@ -1,11 +1,16 @@
 Beatnode::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users do
+    get "/sign_up", :to => "devise/registrations#new"
+    get "/sign_in", :to => "devise/sessions#new"
+    get "/sign_out", :to => "devise/sessions#destroy"
+    get "/:username", :to => "users#show", :as => "user_show"
+  end
 
-  #resources :users, :only => ["show", "index"]
+  resources :users, :only => ["show", "index"]
   resources :beats, :samples
 
-  root :to => "users#index"
+  root :to => "pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
