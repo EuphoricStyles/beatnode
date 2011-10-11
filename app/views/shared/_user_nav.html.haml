@@ -1,0 +1,4 @@
+.user_nav
+  - if user_signed_in?
+    = "Currently signed in as #{current_user.username}."
+    = link_to "Sign out", destroy_user_session_path, :method => :delete

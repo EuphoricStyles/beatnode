@@ -1,13 +1,8 @@
 Beatnode::Application.routes.draw do
 
-  devise_for :users #do
-    #get "/sign_up", :to => "devise/registrations#new"
-    #get "/sign_in", :to => "devise/sessions#new"
-    #get "/sign_out", :to => "devise/sessions#destroy"
-    #get "/:username", :to => "users#show", :as => "user_show"
-  #end
+  devise_for :users
 
-  get "/users/:id" => "users#show", :as => "user", :constraints => { :id => /\d{1,}/ }
+  get "/:username" => "users#show", :as => "user", :constraints => { :username => /[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9\-_]*/ }
 
   resources :beats, :samples
 

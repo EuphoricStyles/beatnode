@@ -30,7 +30,7 @@ describe "user sessions" do
   it "signs out current user" do
     @sign_in_user.call(@user)
 
-    delete destroy_user_session_path
+    click_link "Sign out"
     page.should have_content 'Signed out successfully'
   end
 end
