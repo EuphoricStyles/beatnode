@@ -1,0 +1,2 @@
+%h1= @sample.name.blank? ? File.basename(@sample.audio.url) : @sample.name
+%h2= @sample.description.blank? ? "No description." : @sample.description

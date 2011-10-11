@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
   errors:
     messages:
       size_too_big: "File size can't exceed %{file_size}"
+      blank: "%{attribute} can't be blank"

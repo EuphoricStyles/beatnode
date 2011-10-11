@@ -1,0 +1,8 @@
+%h1 Upload a new sample
+= semantic_form_for @sample do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :audio, :as => :file
+  = f.buttons do
+    = f.commit_button "Upload"
+

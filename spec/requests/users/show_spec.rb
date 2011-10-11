@@ -16,4 +16,12 @@ describe "showing a user" do
     visit "/jimjamz"
     page.should have_content "One upon a time!"
   end
+
+  it "links back to homepage" do
+    other = User.make! :username => "MichaelJordan"
+    @sign_in_user.call(@user)
+    visit "/michaeljordan"
+    click_link "Home"
+    page.should have_content "Home"
+  end
 end

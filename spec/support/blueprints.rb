@@ -1,13 +1,5 @@
 require 'machinist/active_record'
 
-# Add your blueprints here.
-#
-# e.g.
-#   Post.blueprint do
-#     title { "Post #{sn}" }
-#     body  { "Lorem ipsum..." }
-#   end
-#
 User.blueprint do
   username { "testuser-#{sn}" }
   email { "test_email#{sn}@gmail.com" }
