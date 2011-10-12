@@ -35,4 +35,11 @@ RSpec.configure do |config|
   config.after(:each) do  
       DatabaseCleaner.clean  
   end
+
+  #clean up file uploads after tests
+  config.after(:all) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test/*"])
+    end
+  end
 end

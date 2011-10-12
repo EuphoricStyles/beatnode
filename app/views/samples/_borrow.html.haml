@@ -1,0 +1,3 @@
+= form_for current_user.sample_borrows.build(:sample_id => @sample.id) do |f|
+  %div= f.hidden_field :sample_id
+  %div.actions= f.submit 'Grab'

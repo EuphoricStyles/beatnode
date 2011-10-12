@@ -1,3 +1,7 @@
 %header
-  %h1= @user.username
-  %p= @user.bio
+  %h1#username= @user.username
+  %p#bio= @user.bio
+
+%div#borrowed_samples
+  - @user.borrowed_samples.each do |s|
+    %div.borrowed_sample= link_to sample_name_for(s), sample_path(s.id)

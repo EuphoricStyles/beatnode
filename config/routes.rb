@@ -2,6 +2,7 @@ Beatnode::Application.routes.draw do
 
   resources :beats, :only => [ :new, :create, :destroy ]
   resources :samples, :only => [ :show, :new, :create, :destroy ]
+  resources :sample_borrows, :only => [ :create, :destroy ]
 
   devise_for :users
   get "/:username" => "users#show", :as => "user", :constraints => { :username => /[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9\-_]*/ }
