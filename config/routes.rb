@@ -1,13 +1,20 @@
 Beatnode::Application.routes.draw do
 
+  get '/welcome', :to => 'pages#welcome', :as => 'welcome'
+
   resources :beats, :only => [ :new, :create, :destroy ]
   resources :samples, :only => [ :show, :new, :create, :destroy ]
   resources :sample_borrows, :only => [ :create, :destroy ]
 
-  devise_for :users
-  get "/:username" => "users#show", :as => "user", :constraints => { :username => /[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9\-_]*/ }
+  devise_for :users do
+    get '/sign_in', :to => 'devise/sessions#new', :as => 'sign_in'
+    get '/sign_up', :to => 'devise/registrations#new', :as => 'sign_up'
+    get '/home', :to => 'pages#home', :as => 'home'
+  end
 
-  root :to => "pages#home"
+  match '/users/:id', :to => 'users#show', :as => 'user'
+
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

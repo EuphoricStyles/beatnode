@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "user registration" do
   it "signs up users" do
-    visit new_user_registration_path
+    visit sign_up_path
     fill_in "Username", :with => 'rickyrickyrice'
     fill_in "Email", :with => 'alex@beatnode.com'
     fill_in "Password", :with => 'password'
@@ -13,7 +13,7 @@ describe "user registration" do
 
   it "fails on duplicate records" do
     User.make! :username => "rickyrickyrice2", :email => "ricky@rick.com"
-    visit new_user_registration_path
+    visit sign_up_path
     fill_in "Username", :with => 'riCkyrickYrice2'
     fill_in "Email", :with => 'Ricky@rick.com'
     fill_in "Password", :with => 'password'

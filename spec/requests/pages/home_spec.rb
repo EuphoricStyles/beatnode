@@ -25,7 +25,7 @@ describe "home page" do
     @sign_in_user.call(@user)
     page.should have_link "Home"
     click_link "Home"
-    current_path.should == "/"
+    current_path.should == root_path
   end
 
   it "links to new sample form" do

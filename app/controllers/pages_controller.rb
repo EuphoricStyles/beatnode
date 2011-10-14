@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
-  #before_filter :authenticate_user!, :except => :about
 
   def home
-    render :welcome unless user_signed_in?
+    unless user_signed_in?
+      redirect_to welcome_path, :notice => flash[:notice], :alert => flash[:alert]
+    end
   end
 
   def welcome

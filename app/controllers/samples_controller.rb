@@ -14,7 +14,7 @@ class SamplesController < ApplicationController
     
     if @sample.save
       flash[:notice] = "Sample uploaded!"
-      redirect_to root_path
+      redirect_to sample_path @sample
     else
       render :new
     end
