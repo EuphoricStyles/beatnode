@@ -1,2 +1,4 @@
 %h1= "Home for #{current_user.username}"
-%p Find me in app/views/pages/home.html.haml
+
+- if current_user.bio.blank?
+  You haven't uploaded a bio yet!

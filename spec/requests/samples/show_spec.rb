@@ -17,7 +17,7 @@ describe "show samples" do
   end
 
   it "has a grab link" do
-    visit sample_path(@sample.id)
+    visit sample_path(@sample)
     page.should have_button "Grab"
   end
 end

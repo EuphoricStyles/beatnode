@@ -1,6 +1,7 @@
 %header
-  %h1#username= @user.username
-  %p#bio= @user.bio
+  %hgroup
+    %h1#username= @user.username
+    #bio= bio_for @user 
 
 %div#borrowed_samples
   - @user.borrowed_samples.each do |s|
