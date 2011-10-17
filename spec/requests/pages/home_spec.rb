@@ -45,15 +45,19 @@ describe "home page" do
     s = Sample.make! :user => User.make!(:username => 'barry')
     visit sample_path(s)
     click_button "Grab"
-    current_path.should == root_path
+    borrowed_at = SampleBorrow.find_by_sample_id_and_user_id(s.id, @user.id).updated_at
+    fborrowed_at = borrowed_at.strftime("%I:%M %p")
     page.should have_content s.name
-    page.should have_content "Borrowed from barry at #{s.created_at}"
+    page.should have_content "Grabbed from barry at #{fborrowed_at}"
   end
 
   it "lists owned samples" do
     s = Sample.make! :user => @user
+    s.created_at -= 3.months
+    s.save
+    fs = s.created_at.strftime("%b %d")
     visit root_path
     page.should have_content s.name
-    page.should have_content "Uploaded at #{s.created_at}"
+    page.should have_content "Uploaded on #{fs}"
   end
 end

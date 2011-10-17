@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "sample borrowing" do
   before :each do
-    @sample = Sample.make! 
     @user = User.make! :email => "test@test.com"
+    @sample = Sample.make!(:user => User.make!(:username => 'jacob'))
 
     visit sign_in_path
     fill_in "Email", :with => "test@test.com"

@@ -26,7 +26,6 @@ describe User do
     it "borrows samples" do
       s = Sample.make!
       @user.borrow!(s)
-      @user.borrowed_samples.first.should == s
 
       expect { @user.borrow!(s) }.to raise_error(ActiveRecord::RecordNotUnique)
     end
