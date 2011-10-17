@@ -12,4 +12,4 @@
       - @samples.each do |s|
         .sample
           %h3= link_to s.name, sample_path(s)
-          %p= sample_owned_or_borrowed_timestamp(s)
+          %p= sample_owned_or_borrowed_timestamp(current_user, s)

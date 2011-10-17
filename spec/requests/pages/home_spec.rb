@@ -41,23 +41,17 @@ describe "home page" do
     page.should have_content "You haven't added a bio yet!"
   end
 
+  it "lists uploaded samples" do
+    s = Sample.make! :user => @user
+    visit root_path
+    page.should have_content s.name
+  end
+
   it "lists borrowed samples" do
     s = Sample.make! :user => User.make!(:username => 'barry')
     visit sample_path(s)
     click_button "Grab"
-    borrowed_at = SampleBorrow.find_by_sample_id_and_user_id(s.id, @user.id).updated_at
-    fborrowed_at = borrowed_at.strftime("%I:%M %p")
     page.should have_content s.name
-    page.should have_content "Grabbed from barry at #{fborrowed_at}"
-  end
-
-  it "lists owned samples" do
-    s = Sample.make! :user => @user
-    s.created_at -= 3.months
-    s.save
-    fs = s.created_at.strftime("%b %d")
-    visit root_path
-    page.should have_content s.name
-    page.should have_content "Uploaded on #{fs}"
+    page.should have_content "Grabbed from barry"
   end
 end

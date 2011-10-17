@@ -6,10 +6,10 @@ module ApplicationHelper
       "yesterday at #{time.strftime("%I:%M %p")}"
     elsif time > 1.week.ago
       "#{time_ago_in_words(time)} ago"
-    elsif time > 1.year.ago
-      "on #{time.strftime('%b %d')}"
+    elsif time.year == Time.now.year
+      "on #{time.strftime('%B %e').gsub(/\s+/, ' ')}"
     else
-      "on #{time.strftime('%b %d, %Y')}"
+      "on #{time.strftime('%B %e, %Y').gsub(/\s+/, ' ')}"
     end
   end
 end
