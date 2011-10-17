@@ -6,3 +6,11 @@ en:
     messages:
       size_too_big: "File size can't exceed %{file_size}"
       blank: "%{attribute} can't be blank"
+
+  time:
+    formats:
+      default: "%b %d, %Y"
+
+  date:
+    formats:
+      default: "%b %d, %Y"

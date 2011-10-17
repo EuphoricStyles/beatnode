@@ -19,7 +19,6 @@ Beat.blueprint do
 end
 
 Sample.blueprint do
-  name { "some sample-#{sn}" }
   description { "sample sample sample #{sn}." }
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
 end

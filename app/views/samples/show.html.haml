@@ -1,8 +1,6 @@
-#sample_header
-  -#%h1= @sample.name.blank? ? File.basename(@sample.audio.url) : @sample.name
-  %h1= sample_name_for @sample
-  -#%h2= @sample.description.blank? ? "No description." : @sample.description
-  %h2= sample_description_for @sample
+%header
+  %h1= @sample.name
+  %h2= @sample.description
 #sample_borrow
   = if current_user && !current_user.borrowing?(@sample)
     %p= render 'borrow'

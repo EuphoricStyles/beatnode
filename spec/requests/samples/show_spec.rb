@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "show samples" do
   before :each do
-    @sample = Sample.make! :name => "test sample", :description => "test description"
+    @sample = Sample.make! :description => "test description"
     @user = User.make!
     visit new_user_session_path
     fill_in "Email", :with => @user.email
@@ -12,7 +12,7 @@ describe "show samples" do
 
   it "shows the name and description" do
     visit "/samples/1"
-    page.should have_content "test sample"
+    page.should have_content "rickyrice.mp3"
     page.should have_content "test description"
   end
 

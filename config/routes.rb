@@ -3,8 +3,8 @@ Beatnode::Application.routes.draw do
   get '/welcome', :to => 'pages#welcome', :as => 'welcome'
 
   resources :beats, :only => [ :new, :create, :destroy ]
-  resources :samples, :only => [ :show, :new, :create, :destroy ]
   resources :sample_borrows, :only => [ :create, :destroy ]
+  resources :samples
 
   devise_for :users do
     get '/sign_in', :to => 'devise/sessions#new', :as => 'sign_in'

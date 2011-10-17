@@ -22,11 +22,11 @@ class User < ActiveRecord::Base
   has_many :borrowed_samples, :through => :sample_borrows, :source => :sample
 
   def borrow! sample
-    self.sample_borrows.create!(:sample_id => sample.id)
+    self.sample_borrows.create!(:sample_id => sample.id) unless (borrowing?(sample) || self.samples.include?(sample))
   end
 
   def unborrow! sample
-    self.sample_borrows.find_by_sample_id(sample.id).destroy
+    self.sample_borrows.find_by_sample_id(sample.id).destroy if borrowing?(sample)
   end
 
   def borrowing? sample

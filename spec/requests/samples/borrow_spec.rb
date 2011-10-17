@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "sample borrowing" do
   before :each do
-    @sample = Sample.make! :name => "to be borrowed"
+    @sample = Sample.make! 
     @user = User.make! :email => "test@test.com"
 
     visit sign_in_path
@@ -14,8 +14,6 @@ describe "sample borrowing" do
   it "borrows a sample" do
     visit sample_path(@sample)
     click_button "Grab"
-    visit root_path
-    click_link "My samples"
-    page.should have_content "to be borrowed"
+    @user.borrowed_samples.should include(@sample)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111010051046) do
+ActiveRecord::Schema.define(:version => 20111016203407) do
 
   create_table "beats", :force => true do |t|
     t.string   "name",        :null => false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20111010051046) do
   add_index "sample_uses", ["sample_id"], :name => "index_sample_uses_on_sample_id"
 
   create_table "samples", :force => true do |t|
-    t.string   "name"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"

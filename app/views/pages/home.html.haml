@@ -1,4 +1,15 @@
-%h1= "Home for #{current_user.username}"
+%header
+  %h1= "Home for #{current_user.username}"
 
-- if current_user.bio.blank?
-  You haven't uploaded a bio yet!
+#user_info
+  - if current_user.bio.blank?
+    %p You haven't added a bio yet!
+
+  %header
+    %h1 Your samples
+  - unless @samples.empty?
+    #samples
+      - @samples.each do |s|
+        .sample
+          %h3= link_to s.name, sample_path(s)
+          %p= sample_owned_or_borrowed_timestamp(s)

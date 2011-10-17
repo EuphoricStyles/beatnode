@@ -1,5 +1,5 @@
 class SamplesController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :create, :destroy ]
+  before_filter :authenticate_user!#, :only => [ :new, :create, :destroy ]
   
   def show
     @sample = Sample.find(params[:id])
@@ -19,4 +19,9 @@ class SamplesController < ApplicationController
       render :new
     end
   end
+
+#  def index
+#    @owned_samples = current_user.samples
+#    @borrowed_samples = current_user.borrowed_samples
+#  end
 end

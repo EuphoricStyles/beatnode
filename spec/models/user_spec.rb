@@ -20,12 +20,11 @@ describe User do
 
   describe "sample relationship" do
     it "creates samples" do
-      @user.samples.create(:name => "s1")
-      @user.samples.first.name.should == "s1"
+      expect { @user.samples.create }.to change(@user.samples, :size).by(1)
     end
 
     it "borrows samples" do
-      s = Sample.make! :name => "new sample"
+      s = Sample.make!
       @user.borrow!(s)
       @user.borrowed_samples.first.should == s
 
@@ -33,7 +32,7 @@ describe User do
     end
 
     it "unborrows samples" do
-      s = Sample.make! :name => "sample"
+      s = Sample.make!
       @user.borrow!(s)
       @user.should be_borrowing(s)
       @user.unborrow!(s)
@@ -41,7 +40,7 @@ describe User do
     end
 
     it "has borrowing? method" do
-      s = Sample.make! :name => "borrow"
+      s = Sample.make! 
       @user.borrow!(s)
       @user.should be_borrowing(s)
     end
