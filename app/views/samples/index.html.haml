@@ -3,12 +3,5 @@
     %h1 Your samples
 
   %ul
-    - @owned_samples.each do |s|
-      %li.sample= link_to s.name, sample_path(s)
-
-  %header
-    %h1 Your borrowed samples
-
-  %ul
-    - @borrowed_samples.each do |s|
+    - @presenter.all_samples.each do |s|
       %li.sample= link_to s.name, sample_path(s)

@@ -20,8 +20,7 @@ class SamplesController < ApplicationController
     end
   end
 
-#  def index
-#    @owned_samples = current_user.samples
-#    @borrowed_samples = current_user.borrowed_samples
-#  end
+  def index
+    @presenter = Samples::IndexPresenter.new(current_user)
+  end
 end

@@ -3,6 +3,8 @@ require 'file_size_validator'
 class Sample < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
+  default_scope order('created_at desc')
+
   attr_accessible :description, :audio
 
   mount_uploader :audio, AudioUploader

@@ -49,6 +49,8 @@ module Beatnode
     config.generators do |g|
       g.fixture_replacement :machinist
     end
+
+    config.autoload_paths += [config.root.join('app/presenters')]
   end
 
 end
