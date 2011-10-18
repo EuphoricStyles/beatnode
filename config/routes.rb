@@ -5,6 +5,7 @@ Beatnode::Application.routes.draw do
   resources :beats, :only => [ :new, :create, :destroy ]
   resources :sample_borrows, :only => [ :create, :destroy ]
   resources :samples
+  resources :user_relationships, :only => [ :create, :destroy ]
 
   devise_for :users do
     get '/sign_in', :to => 'devise/sessions#new', :as => 'sign_in'
