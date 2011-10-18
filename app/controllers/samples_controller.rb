@@ -1,5 +1,5 @@
 class SamplesController < ApplicationController
-  before_filter :authenticate_user!#, :only => [ :new, :create, :destroy ]
+  before_filter :authenticate_user!
   
   def show
     @sample = Sample.find(params[:id])
