@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     user_relationships.create!(:watched_id => user.id)
   end
 
+  def unwatch!(user)
+    user_relationships.find_by_watched_id(user.id).destroy
+  end
+
   def watching?(user)
     !!user_relationships.find_by_watched_id(user.id)
   end

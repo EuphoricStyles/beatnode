@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @samples_presenter = Samples::IndexPresenter.new(@user)
   end
 
   def index

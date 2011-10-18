@@ -3,6 +3,23 @@
     %h1#username= @user.username
     %h3#bio= @user.bio
 
-%div#borrowed_samples
-  - @user.borrowed_samples.each do |s|
-    %div.borrowed_sample= link_to sample_name_for(s), sample_path(s.id)
+#watch
+  - if current_user.watching?(@user)
+    = render 'unwatch'
+  - else
+    = render 'watch'
+
+%header 
+  %h1 Samples
+
+#uploaded_samples
+  %h2 Uploaded
+  %ul
+    - @samples_presenter.uploaded_samples.each do |s|
+      %li.sample= link_to s.name, sample_path(s)
+
+#borrowed_samples
+  %h2 Grabbed
+  %ul
+    - @samples_presenter.borrowed_samples.each do |s|
+      %li.sample= link_to s.name, sample_path(s)

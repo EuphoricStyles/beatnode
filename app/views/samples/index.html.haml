@@ -1,7 +1,14 @@
-#owned_samples
-  %header 
-    %h1 Your samples
+%header 
+  %h1 Your samples
 
+#uploaded_samples
+  %h2 Uploaded
   %ul
-    - @presenter.all_samples.each do |s|
+    - @presenter.uploaded_samples.each do |s|
+      %li.sample= link_to s.name, sample_path(s)
+
+#borrowed_samples
+  %h2 Grabbed
+  %ul
+    - @presenter.borrowed_samples.each do |s|
       %li.sample= link_to s.name, sample_path(s)
