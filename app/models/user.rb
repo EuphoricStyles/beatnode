@@ -15,21 +15,39 @@ class User < ActiveRecord::Base
 
   validates_length_of :bio, :maximum => 600
 
+  # beats and samples uploaded by the user
   has_many :beats, :dependent => :destroy
   has_many :samples, :dependent => :destroy
 
-  has_many :sample_borrows
+  # samples taken from other users (like forking in github kinda)
+  has_many :sample_borrows, :dependent => :destroy
   has_many :borrowed_samples, :through => :sample_borrows, :source => :sample
 
-  def borrow! sample
-    self.sample_borrows.create!(:sample_id => sample.id) unless samples.include?(sample)
+  # user watches other users
+  has_many :user_relationships, :foreign_key => 'watcher_id', :dependent => :destroy
+  has_many :watching, :through => :user_relationships, :source => 'watched_id'
+
+  # user is watched by other users
+  has_many :reverse_user_relationships, :foreign_key => 'watched_id', :class_name => 'UserRelationship'
+  has_many :watchers, :through => :reverse_user_relationships
+
+  def watch!(user)
+    user_relationships.create!(:watched_id => user.id)
   end
 
-  def unborrow! sample
-    self.sample_borrows.find_by_sample_id(sample.id).destroy if borrowing?(sample)
+  def watching?(user)
+    !!user_relationships.find_by_watched_id(user.id)
   end
 
-  def borrowing? sample
-    !!self.sample_borrows.find_by_sample_id(sample.id)
+  def borrow!(sample)
+    sample_borrows.create!(:sample_id => sample.id) unless samples.include?(sample)
+  end
+
+  def unborrow!(sample)
+    sample_borrows.find_by_sample_id(sample.id).destroy if borrowing?(sample)
+  end
+
+  def borrowing?(sample)
+    !!sample_borrows.find_by_sample_id(sample.id)
   end
 end

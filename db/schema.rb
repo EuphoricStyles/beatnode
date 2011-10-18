@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111016203407) do
+ActiveRecord::Schema.define(:version => 20111017222539) do
 
   create_table "beats", :force => true do |t|
     t.string   "name",        :null => false
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(:version => 20111016203407) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "user_relationships", :force => true do |t|
+    t.integer  "watcher_id"
+    t.integer  "watched_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_relationships", ["watched_id"], :name => "index_user_relationships_on_watched_id"
+  add_index "user_relationships", ["watcher_id", "watched_id"], :name => "index_user_relationships_on_watcher_id_and_watched_id", :unique => true
+  add_index "user_relationships", ["watcher_id"], :name => "index_user_relationships_on_watcher_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

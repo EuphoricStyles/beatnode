@@ -40,3 +40,7 @@ This is a multiline comment.
 
   body { b }
 end
+
+UserRelationship.blueprint do
+  # Attributes here
+end

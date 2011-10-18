@@ -18,7 +18,7 @@ describe User do
     }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
-  describe "sample relationship" do
+  describe "sample relationships" do
     it "creates samples" do
       expect { @user.samples.create }.to change(@user.samples, :size).by(1)
     end
