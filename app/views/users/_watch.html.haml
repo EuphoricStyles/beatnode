@@ -1,5 +1,4 @@
-#toggle_watch
-  = form_for current_user.user_relationships.build(:watched_id => @user.id), :remote => true do |f|
-    %div= f.hidden_field :watched_id
-    %div.actions= f.submit 'Watch'
-  
+= form_for current_user.user_relationships.build(:watched_id => @user.id), :remote => true do |f|
+  = f.hidden_field :watched_id
+  #watch_button= f.submit 'Watch', :class => 'btn success'
+

@@ -5,11 +5,7 @@
   - if current_user.bio.blank?
     %p You haven't added a bio yet!
 
-  %header
-    %h1 Your samples
-  - unless @samples.empty?
-    #samples
-      - @samples.each do |s|
-        .sample
-          %h3= link_to s.name, sample_path(s)
-          %p= sample_owned_or_borrowed_timestamp(current_user, s)
+#upload
+  %ul
+    %li= link_to "Upload a sample", new_sample_path
+    %li= link_to "Upload a beat", new_beat_path

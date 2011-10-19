@@ -38,10 +38,13 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'database_cleaner'
+end
+
 gem 'therubyracer'
-gem 'rspec-rails', :groups => [ :test, :development ]
-gem 'capybara', :groups => [ :test, :development ]
-gem 'database_cleaner', :groups => [ :test, :development ]
 gem 'mime-types'
 gem 'carrierwave'
 gem 'devise'

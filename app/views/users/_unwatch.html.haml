@@ -1,3 +1,2 @@
-#toggle_watch
-  = form_for current_user.user_relationships.find_by_watched_id(@user.id), :html => {:method => :delete}, :remote => true do |f|
-    %div.actions= f.submit 'Unwatch'
+= form_for current_user.user_relationships.find_by_watched_id(@user), :html => {:method => :delete}, :remote => true do |f|
+  #unwatch_button= f.submit 'Unwatch', :class => 'btn'

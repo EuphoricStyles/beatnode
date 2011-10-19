@@ -9,7 +9,7 @@ class UserRelationshipsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id]).watched
+    @user = UserRelationship.find(params[:id]).watched
     current_user.unwatch!(@user)
     respond_to do |format|
       format.html { redirect_to @user }

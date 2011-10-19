@@ -4,10 +4,8 @@
     %h3#bio= @user.bio
 
 #watch
-  - if current_user.watching?(@user)
-    = render 'unwatch'
-  - else
-    = render 'watch'
+  - unless current_user == @user
+    = render 'watch_form'
 
 %header 
   %h1 Samples

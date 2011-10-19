@@ -40,18 +40,4 @@ describe "home page" do
     click_button "Sign in"
     page.should have_content "You haven't added a bio yet!"
   end
-
-  it "lists uploaded samples" do
-    s = Sample.make! :user => @user
-    visit root_path
-    page.should have_content s.name
-  end
-
-  it "lists borrowed samples" do
-    s = Sample.make! :user => User.make!(:username => 'barry')
-    visit sample_path(s)
-    click_button "Grab"
-    page.should have_content s.name
-    page.should have_content "Grabbed from barry"
-  end
 end
