@@ -2,13 +2,14 @@ Beatnode::Application.routes.draw do
 
   get '/welcome', :to => 'pages#welcome', :as => 'welcome'
 
-  resources :beats, :only => [ :new, :create, :destroy ]
+  resources :beats
   resources :sample_borrows, :only => [ :create, :destroy ]
   resources :samples
   resources :user_relationships, :only => [ :create, :destroy ]
 
   devise_for :users do
     get '/sign_in', :to => 'devise/sessions#new', :as => 'sign_in'
+    get '/sign_out', :to => 'devise/sessions#destroy', :as => 'sign_out'
     get '/sign_up', :to => 'devise/registrations#new', :as => 'sign_up'
     get '/home', :to => 'pages#home', :as => 'home'
   end

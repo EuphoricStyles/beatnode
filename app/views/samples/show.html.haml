@@ -1,6 +1,7 @@
 %header
   %h1= @sample.name
   %h2= @sample.description
+  %audio{:src => @sample.audio.path} 
 #sample_borrow
-  = if current_user && !current_user.borrowing?(@sample)
+  = if user_signed_in? && !current_user.borrowing?(@sample) && !current_user.own?(@sample)
     %p= render 'borrow'

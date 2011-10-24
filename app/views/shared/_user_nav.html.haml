@@ -1,6 +1,7 @@
-%nav
-  %ul{:class => 'pills'}
-    %li= link_to "Home", root_path
-    %li= link_to "Profile", user_path(current_user)
-    %li= link_to "Samples", samples_path
-    %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+%nav{:class => 'span-24 last'}
+  %ul
+    %li= link_to "Home", root_path, :class => 'span-4'
+    %li= link_to "Profile", user_path(current_user), :class => 'span-4'
+    %li= link_to "Samples", samples_path, :class => 'span-4'
+    %li= link_to "Beats", beats_path, :class => 'span-4'
+    %li= link_to "Sign out", sign_out_path, :class => 'span-4'

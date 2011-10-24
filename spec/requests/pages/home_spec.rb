@@ -27,7 +27,7 @@ describe "home page" do
 
   it "links to new sample form" do
     click_link "Upload a sample"
-    page.should have_content "Upload a new sample"
+    page.should have_content "Upload a sample"
   end
 
   it "says if user doesn't have a bio" do

@@ -20,6 +20,8 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'guard'
+  gem 'rb-inotify', :require => false
 end
 
 group :test do
@@ -49,4 +51,3 @@ gem 'mime-types'
 gem 'carrierwave'
 gem 'devise'
 gem 'acts-as-taggable-on', '~>2.1.0'
-gem 'formtastic'

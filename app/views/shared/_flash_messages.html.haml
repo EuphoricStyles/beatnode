@@ -1,0 +1,7 @@
+#flash_messages{:class => 'span-24 last'}
+  - if flash[:success]
+    .success= flash[:success]
+  - if flash[:notice]
+    .notice= flash[:notice]
+  - if flash[:alert]
+    .error= flash[:alert]

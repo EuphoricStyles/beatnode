@@ -1,0 +1,8 @@
+%header 
+  %h1 Your beats
+
+- unless @presenter.all_beats.empty?
+  #beats
+    %ul
+      - @presenter.all_beats.each do |b|
+        %li.beat= link_to b.name, beat_path(b)

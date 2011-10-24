@@ -13,7 +13,7 @@ describe "user sessions" do
 
   it "signs in existing users" do
     @sign_in_user.call(@user)
-    page.should have_content 'Signed in successfully'
+    page.should have_content 'Signed in'
   end
 
   it "fails on wrong email" do
@@ -28,6 +28,6 @@ describe "user sessions" do
     @sign_in_user.call(@user)
 
     click_link "Sign out"
-    page.should have_content 'Signed out successfully'
+    page.should have_content 'Signed out'
   end
 end

@@ -16,7 +16,7 @@ describe 'sample creation' do
 
   it "has a new sample form" do
     visit new_sample_path
-    page.should have_content "Upload a new sample"
+    page.should have_content "Upload a sample"
   end
 
   it "creates a new sample" do

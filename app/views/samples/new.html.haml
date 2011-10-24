@@ -1,6 +1,17 @@
-%h1 Upload a new sample
-= semantic_form_for @sample do |f|
-  = f.input :audio, :as => :file
-  = f.input :description
-  = f.buttons do
-    = f.commit_button "Upload"
+%header
+  %h1 Upload a sample
+
+= form_for @sample do |f|
+  = render 'shared/error_messages', :object => f.object
+
+  .field
+    = f.label :audio, :class => 'large'
+    %br
+    = f.file_field :audio
+
+  .field
+    = f.label :description, :class => 'large'
+    %br
+    = f.text_area :description, :placeholder => 'Sample description...'
+
+  .actions= f.submit 'Upload'

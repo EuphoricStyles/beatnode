@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Beat do
   before :each do
     @user = User.make!
-    @beat = Beat.make! :user => @creator
+    @beat = Beat.make! :user => @user
   end
 
   after :each do
@@ -17,7 +17,7 @@ describe Beat do
   end
 
   it "has a creator" do
-    @beat.user.should == @creator
+    @beat.user.should == @user
   end
 
   it "rejects large file sizes" do
@@ -29,8 +29,8 @@ describe Beat do
   end
 
   it "validates description length" do
-    expect { Beat.make!(:description => 'a'*601) }.to raise_error(ActiveRecord::RecordInvalid)
-    expect { Beat.make!(:description => 'a'*600) }.not_to raise_error
+    expect { Beat.make!(:description => 'a'*201) }.to raise_error(ActiveRecord::RecordInvalid)
+    expect { Beat.make!(:description => 'a'*200) }.not_to raise_error
   end
 
   it "validates name length" do

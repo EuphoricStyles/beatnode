@@ -30,8 +30,8 @@ describe Sample do
   end
 
   it "validates description length" do
-    expect { Sample.make!(:description => 'a'*601) }.to raise_error(ActiveRecord::RecordInvalid)
-    expect { Sample.make!(:description => 'a'*600) }.not_to raise_error
+    expect { Sample.make!(:description => 'a'*201) }.to raise_error(ActiveRecord::RecordInvalid)
+    expect { Sample.make!(:description => 'a'*200) }.not_to raise_error
   end
 
   it "has tags" do

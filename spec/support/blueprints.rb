@@ -24,7 +24,8 @@ Sample.blueprint do
 end
 
 SampleUse.blueprint do
-  # Attributes here
+  beat { Beat.make! }
+  sample { Sample.make! }
 end
 
 SampleBorrow.blueprint do

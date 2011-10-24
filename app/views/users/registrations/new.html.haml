@@ -3,28 +3,28 @@
 = form_for(:user, :url => user_registration_path) do |f|
   = devise_error_messages!
 
-  #field
+  .field
     = f.label :username
     %br
     = f.text_field :username
 
-  #field
+  .field
     = f.label :email
     %br
     = f.email_field :email
 
-  #field
+  .field
     = f.label :password
     %br
     = f.password_field :password
 
-  #field
+  .field
     = f.label :password_confirmation, "Confirm password"
     %br
     = f.password_field :password_confirmation
 
-  #submit
-    = f.submit "Sign up"
+  .submit
+    .actions= f.submit "Sign up", :class => 'btn primary'
 
   #links
-    = render :partial => "devise/shared/links"
+    = render "devise/shared/links"

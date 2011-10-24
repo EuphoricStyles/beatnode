@@ -54,4 +54,14 @@ class User < ActiveRecord::Base
   def borrowing?(sample)
     !!sample_borrows.find_by_sample_id(sample.id)
   end
+
+  def own?(audio)
+    if audio.is_a?(Sample)
+      samples.include?(audio)
+    elsif audio.is_a?(Beat)
+      beats.include?(audio)
+    else
+      false
+    end
+  end
 end

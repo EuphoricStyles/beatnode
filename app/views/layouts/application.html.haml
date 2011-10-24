@@ -2,20 +2,20 @@
 %html{:lang => 'en'}
 %head
   %title Beatnode
-  = stylesheet_link_tag "application"
-  = javascript_include_tag "application"
-  %link{:rel => "stylesheet", :href => "http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css"}
+  = stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection'
+  = stylesheet_link_tag 'blueprint/print', :media => 'print'
+  = stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection'
+  = stylesheet_link_tag 'application'
+  = javascript_include_tag 'application'
   = csrf_meta_tags
 %body
   .container
-    = render "shared/header"
-    = render "shared/user_nav" if user_signed_in?
+    %section.header
+      = render 'shared/header'
+      = render 'shared/user_nav' if user_signed_in?
+      = render 'shared/flash_messages'
 
-    #flash
-      %p#notice= flash[:notice]
-      %p#alert= flash[:alert]
-
-    %section
+    %section.content
       = yield
 
     = debug(params) if Rails.env.development?
