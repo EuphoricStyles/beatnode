@@ -13,7 +13,7 @@ class SamplesController < ApplicationController
     @sample = current_user.samples.build(params[:sample])
     
     if @sample.save
-      flash[:notice] = "Sample uploaded!"
+      flash[:success] = "Sample uploaded!"
       redirect_to sample_path @sample
     else
       render :new

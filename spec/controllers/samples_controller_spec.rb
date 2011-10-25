@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe BeatsController do
+describe SamplesController do
   render_views
 
-  let(:beat) { mock_model(Beat) }
+  let(:sample) { mock_model(Sample) }
 
   before :each do
     @user = User.make!
     sign_in(@user)
 
-    @beat = Beat.make!
+    @sample = Sample.make!
   end
 
   describe 'GET new' do
@@ -21,20 +21,20 @@ describe BeatsController do
       response.should be_successful
     end
 
-    it 'renders the new beat form' do
-      response.body.should have_selector('form.new_beat')
+    it 'renders the new sample form' do
+      response.body.should have_selector('form.new_sample')
     end
   end
 
   describe 'POST create' do
-    context 'when beat is valid' do
+    context 'when sample is valid' do
       before :each do
-        Beat.stub!(:new).and_return(@beat)
+        Sample.stub!(:new).and_return(@sample)
       end
 
       it 'redirects to show page' do
         post :create
-        response.should redirect_to(:action => :show, :id => @beat)
+        response.should redirect_to(:action => :show, :id => @sample)
       end
 
       it 'sets flash[:success]' do
@@ -49,7 +49,7 @@ describe BeatsController do
       end
 
       it 'renders the new template' do
-        post :create, :beat => @invalid
+        post :create, :sample => @invalid
         response.should render_template(:new)
       end
     end
@@ -57,19 +57,19 @@ describe BeatsController do
 
   describe 'GET show' do
     it 'assigns @beat' do
-      get :show, :id => @beat
-      assigns[:beat].should be_eql(@beat)
+      get :show, :id => @sample
+      assigns[:sample].should be_eql(@sample)
     end
   end
 
   describe 'GET index' do
     before :each do
-      10.times {|i| Beat.make! :name => "#{i}", :user => @user}
+      10.times {|i| Sample.make! :description => "#{i}", :user => @user}
     end
 
     it 'assigns @presenter' do
       get :index
-      assigns[:presenter].should be_kind_of(Beats::IndexPresenter)
+      assigns[:presenter].should be_kind_of(Samples::IndexPresenter)
     end
   end
 end

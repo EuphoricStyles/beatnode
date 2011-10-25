@@ -1,22 +1,12 @@
 require 'spec_helper'
 
-describe "home page" do
+describe "pages/home.html.haml" do
   before :each do
     @user = User.make! :username => "testuser", :email => "test@example.com"
     visit sign_in_path
     fill_in "Email", :with => @user.email
     fill_in "Password", :with => @user.password
     click_button "Sign in"
-  end
-
-  it "shows user if user signed in" do
-    page.should have_content "Home for testuser"
-  end
-
-  it "redirects to sign_in page if no one signed in" do
-    click_link 'Sign out'
-    visit "/"
-    page.should have_content "Sign in"
   end
 
   it "has link to homepage" do
