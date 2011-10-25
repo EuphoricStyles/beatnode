@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'watching' do
+describe 'watching users' do
   before :each do
     @user = User.make!
     @other = User.make! :username => 'other'
@@ -11,18 +11,12 @@ describe 'watching' do
     visit user_path @other
   end
 
-  it 'has a "Watch" link' do
+  it 'has a "Watch" button' do
     page.should have_button 'Watch'
   end
 
-  it 'adds a user relationship' do
-    expect { click_button 'Watch' }.to change(UserRelationship, :count).by(1)
-  end
-
   it 'has "unwatch" link' do
-    page.should_not have_button 'Unwatch'
     click_button 'Watch'
     page.should have_button 'Unwatch'
-    page.should_not have_button 'Watch'
   end
 end

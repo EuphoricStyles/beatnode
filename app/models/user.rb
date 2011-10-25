@@ -25,10 +25,10 @@ class User < ActiveRecord::Base
 
   # user watches other users
   has_many :user_relationships, :foreign_key => 'watcher_id', :dependent => :destroy
-  has_many :watching, :through => :user_relationships, :source => 'watched_id'
+  has_many :watching, :through => :user_relationships, :source => :watched
 
   # user is watched by other users
-  has_many :reverse_user_relationships, :foreign_key => 'watched_id', :class_name => 'UserRelationship'
+  has_many :reverse_user_relationships, :foreign_key => 'watched_id', :class_name => 'UserRelationship', :dependent => :destroy
   has_many :watchers, :through => :reverse_user_relationships
 
   def watch!(user)
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
     elsif audio.is_a?(Beat)
       beats.include?(audio)
     else
-      false
+      nil
     end
   end
 end

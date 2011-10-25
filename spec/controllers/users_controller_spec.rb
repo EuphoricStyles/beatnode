@@ -16,4 +16,10 @@ describe UsersController do
       assigns[:user].should == @other
     end
   end
+
+  describe 'GET index' do
+    before :each do
+      get :index
+    end
+  end
 end

@@ -44,6 +44,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'database_cleaner'
+  gem 'faker'
 end
 
 gem 'therubyracer'
