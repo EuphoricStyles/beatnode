@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Beat do
   before :each do
     @user = User.make!
-    @beat = Beat.make! :user => @user
+    @beat = Beat.make! :user => @user, :name => 'some beat', :description => 'beat beat beat'
   end
 
   after :each do
@@ -11,8 +11,8 @@ describe Beat do
   end
 
   it "has a name, description, and audio attachment" do
-    @beat.name.should =~ /some beat/i
-    @beat.description.should =~ /beat beat beat/i
+    @beat.name.should == 'some beat'
+    @beat.description.should == 'beat beat beat'
     @beat.audio.should_not be_nil
   end
 
@@ -41,5 +41,21 @@ describe Beat do
   it "has tags" do
     @beat.tag_list = "piano, drums, bass"
     @beat.tag_list.should == %w{ piano drums bass}
+  end
+
+  describe '.from_watching' do
+    before :each do
+      5.times { @user.watch!(User.make!) }
+      @b1 = Beat.make! :user_id => @user.watching.first.id
+      @b2 = Beat.make! :user_id => @user.watching.last.id
+    end
+
+    it 'is a class method' do
+      Beat.should respond_to(:from_watching)
+    end
+
+    it 'returns any beats created by watched users' do
+      Beat.from_watching(@user).should == [ @b1, @b2 ]
+    end
   end
 end

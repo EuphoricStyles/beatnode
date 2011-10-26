@@ -1,5 +1,3 @@
-require 'file_size_validator' 
-
 class Sample < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
@@ -24,6 +22,8 @@ class Sample < ActiveRecord::Base
   validates :audio, :presence => true, :file_size => { :maximum => 5.megabytes }
 
   acts_as_taggable
+
+  include_in_feed
 
   def name
     @name ||= truncate(File.basename(self.audio.url), :length => 50)

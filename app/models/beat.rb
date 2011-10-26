@@ -1,5 +1,3 @@
-require 'file_size_validator' 
-
 class Beat < ActiveRecord::Base
   attr_accessible :name, :description, :audio
 
@@ -19,4 +17,6 @@ class Beat < ActiveRecord::Base
   validates :audio, :presence => true, :file_size => { :maximum => 10.megabytes }
 
   acts_as_taggable
+
+  include_in_feed
 end

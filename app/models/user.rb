@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username, :case_sensitive => false
   validates_length_of :username, :minimum => 4, :maximum => 20
-  validates_format_of :username, :with => /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9\-_]*$/
+  validates_format_of :username, :with => /^[a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9\-_.]*$/
 
   validates_length_of :bio, :maximum => 600
 

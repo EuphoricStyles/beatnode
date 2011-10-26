@@ -1,25 +1,43 @@
 require 'machinist/active_record'
 
+class String
+  def size_to(range)
+    self.length < range.min ? self + ('a'*(range.min - length)) : self[0..range.max-1]
+  end
+end
+
+def valid_paragraph(range)
+  Faker::Lorem.paragraph(rand(10)).size_to(range)
+end
+
+def valid_username(range)
+  Faker::Internet.user_name.size_to(range) 
+end
+
+def valid_name(range)
+  Faker::Name.name.size_to(range) 
+end
+
+def valid_email
+  Faker::Internet.email
+end
+
 User.blueprint do
-  username { "testuser-#{sn}" }
-  email { "test_email#{sn}@gmail.com" }
-  bio { <<-EOB
-  one time i made a beat and from then on i made beats.
-  Once i made a beat about making beats!
-  EOB
-  }
+  username { valid_username(4..20) }
+  email { valid_email }
+  bio { valid_paragraph(0..600) }
   password { "password" }
   password_confirmation { "password" }
 end
 
 Beat.blueprint do
-  name { "some beat-#{sn}" }
-  description { "beat beat beat #{sn}." }
+  name { valid_name(0..75) }
+  description { valid_paragraph(0..200) }
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
 end
 
 Sample.blueprint do
-  description { "sample sample sample #{sn}." }
+  description { valid_paragraph(0..200) }
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
 end
 
@@ -33,13 +51,7 @@ SampleBorrow.blueprint do
 end
 
 Comment.blueprint do
-  b = <<-EOB
-This is a multiline comment.
-
-  It has some weird whitespace and stuff.
-  EOB
-
-  body { b }
+  body { valid_paragraph(0..200) }
 end
 
 UserRelationship.blueprint do

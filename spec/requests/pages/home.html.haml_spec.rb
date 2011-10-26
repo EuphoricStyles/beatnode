@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "pages/home.html.haml" do
   before :each do
-    @user = User.make! :username => "testuser", :email => "test@example.com"
+    @user = User.make!
     visit sign_in_path
     fill_in "Email", :with => @user.email
     fill_in "Password", :with => @user.password

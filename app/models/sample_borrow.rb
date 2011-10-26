@@ -6,4 +6,6 @@ class SampleBorrow < ActiveRecord::Base
 
   validates_presence_of :sample_id
   validates_presence_of :user_id
+
+  include_in_feed
 end

@@ -38,4 +38,21 @@ describe Sample do
     @sample.tag_list = "piano, drums, bass"
     @sample.tag_list.should == %w{ piano drums bass}
   end
+
+  describe '.from_watching' do
+    before :each do
+      @user = User.make!
+      5.times { @user.watch!(User.make!) }
+      @s1 = Sample.make! :user_id => @user.watching.first.id
+      @s2 = Sample.make! :user_id => @user.watching.last.id
+    end
+
+    it 'is a class method' do
+      Sample.should respond_to(:from_watching)
+    end
+
+    it 'returns any beats created by watched users' do
+      Sample.from_watching(@user).should == [ @s1, @s2 ]
+    end
+  end
 end

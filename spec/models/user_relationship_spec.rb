@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe UserRelationship do
   before :each do
-    @user = User.make! :username => 'alejandro'
-    @other = User.make! :username => 'otheruser'
+    @user = User.make!
+    @other = User.make!
     @relationship = @user.user_relationships.build(:watched_id => @other.id)
   end
 
@@ -20,7 +20,7 @@ describe UserRelationship do
   end
 
   it "watches other users" do
-    @user.watch!(u = User.make!(:username => 'watchme'))
+    @user.watch!(u = User.make!)
     @user.should be_watching(u)
   end
 end

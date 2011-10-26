@@ -2,20 +2,29 @@ require 'spec_helper'
 
 describe SampleBorrow do
   before :each do
-    @user = User.make! :username => 'bobby'
-    @sample = Sample.make! :user => User.make!
-    @sb = @user.sample_borrows.build(:sample_id => @sample.id)
+    @user = User.make!
+    @watched = User.make!
+    @user.watch!(@watched)
+    @sample = Sample.make!
+
+    @sb = @watched.sample_borrows.build(:sample_id => @sample.id)
+  end
+
+  it 'is valid' do
     @sb.save!
   end
 
-  it 'has a borrowing? method' do
-    @user.should be_borrowing @sample
-    @user.should_not be_borrowing Sample.make!
-  end
+  describe '.from_watching' do
+    before :each do
+      @sb.save
+    end
 
-  it 'has a borrow! method' do
-    newsample = Sample.make! :user => User.make!
-    @user.borrow!(newsample)
-    @user.should be_borrowing newsample
+    it 'is a class method' do
+      SampleBorrow.should respond_to :from_watching
+    end
+
+    it 'returns sample borrows from watching' do
+      SampleBorrow.from_watching(@user).should == [ @sb ]
+    end
   end
 end

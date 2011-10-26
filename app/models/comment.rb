@@ -4,5 +4,5 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
 
   validates_presence_of :body
-  validates_length_of :body, :maximum => 600
+  validates_length_of :body, :maximum => 200
 end
