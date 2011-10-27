@@ -1,6 +1,8 @@
 class Beat < ActiveRecord::Base
   attr_accessible :name, :description, :audio
 
+  default_scope order('created_at desc')
+
   mount_uploader :audio, AudioUploader
 
   belongs_to :user

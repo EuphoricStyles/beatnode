@@ -41,10 +41,10 @@ describe Sample do
 
   describe '.from_watching' do
     before :each do
-      @user = User.make!
-      5.times { @user.watch!(User.make!) }
-      @s1 = Sample.make! :user_id => @user.watching.first.id
-      @s2 = Sample.make! :user_id => @user.watching.last.id
+      @u = User.make!
+      5.times { @u.watch!(User.make!) }
+      @s1 = Sample.make! :user_id => @u.watching.first.id
+      @s2 = Sample.make! :user_id => @u.watching.last.id
     end
 
     it 'is a class method' do
@@ -52,7 +52,7 @@ describe Sample do
     end
 
     it 'returns any beats created by watched users' do
-      Sample.from_watching(@user).should == [ @s1, @s2 ]
+      Sample.from_watching(@u).should == [ @s2, @s1 ]
     end
   end
 end
