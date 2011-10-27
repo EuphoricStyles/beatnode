@@ -25,27 +25,34 @@ describe User do
   end
 
   describe "borrowing" do
-    it "borrows samples" do
-      s = Sample.make!
-      expect { @user.borrow!(s) }.to change(SampleBorrow, :count).by(1)
+
+    describe ".borrow!" do
+      it "borrows samples" do
+        s = Sample.make!
+        expect { @user.borrow!(s) }.to change(SampleBorrow, :count).by(1)
+      end
+
+      it "only borrows samples once" do
+        s = Sample.make!
+        @user.borrow!(s)
+        expect { @user.borrow!(s) }.to raise_error(ActiveRecord::RecordNotUnique, /sample/i)
+      end
     end
 
-    it "only borrows samples once" do
-      s = Sample.make!
-      @user.borrow!(s)
-      expect { @user.borrow!(s) }.to raise_error(ActiveRecord::RecordNotUnique, /sample/i)
+    describe ".unborrow!" do
+      it "unborrows samples" do
+        s = Sample.make!
+        @user.borrow!(s)
+        expect { @user.unborrow!(s) }.to change(SampleBorrow, :count).by(-1)
+      end
     end
 
-    it "unborrows samples" do
-      s = Sample.make!
-      @user.borrow!(s)
-      expect { @user.unborrow!(s) }.to change(SampleBorrow, :count).by(-1)
-    end
-
-    it "has borrowing? method" do
-      s = Sample.make! 
-      @user.borrow!(s)
-      @user.should be_borrowing(s)
+    describe ".borrowing?" do
+      it "returns true if user is borrowing a sample" do
+        s = Sample.make! 
+        @user.borrow!(s)
+        @user.should be_borrowing(s)
+      end
     end
   end
 end

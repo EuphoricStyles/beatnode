@@ -18,9 +18,4 @@ describe UserRelationship do
   it "has a watched" do
     @relationship.watched.should == @other
   end
-
-  it "watches other users" do
-    @user.watch!(u = User.make!)
-    @user.should be_watching(u)
-  end
 end

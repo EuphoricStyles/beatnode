@@ -42,16 +42,13 @@ Sample.blueprint do
 end
 
 SampleUse.blueprint do
-  beat { Beat.make! }
-  sample { Sample.make! }
 end
 
 SampleBorrow.blueprint do
-  # Attributes here
 end
 
 Comment.blueprint do
-  body { valid_paragraph(0..200) }
+  body { valid_paragraph(1..200) }
 end
 
 UserRelationship.blueprint do

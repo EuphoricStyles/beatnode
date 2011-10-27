@@ -50,7 +50,7 @@ module Beatnode
       g.fixture_replacement :machinist
     end
 
-    config.autoload_paths += [config.root.join('app/presenters')]
+    config.autoload_paths += %W{ #{Rails.root}/app/presenters }
   end
 
 end

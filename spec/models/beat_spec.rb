@@ -42,21 +42,4 @@ describe Beat do
     @beat.tag_list = "piano, drums, bass"
     @beat.tag_list.should == %w{ piano drums bass}
   end
-
-  describe '.from_watching' do
-    before :each do
-      @u = User.make!
-      5.times { @u.watch!(User.make!) }
-      @b1 = Beat.make! :user_id => @u.watching.first.id
-      @b2 = Beat.make! :user_id => @u.watching.last.id
-    end
-
-    it 'is a class method' do
-      Beat.should respond_to(:from_watching)
-    end
-
-    it 'returns all beats created by watched users' do
-      Beat.from_watching(@u).should == [ @b2, @b1 ]
-    end
-  end
 end
