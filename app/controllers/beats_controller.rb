@@ -21,6 +21,6 @@ class BeatsController < ApplicationController
   end
 
   def index
-    @presenter = Beats::IndexPresenter.new(current_user)
+    @presenter = ::Beats::IndexPresenter.new(current_user)
   end
 end

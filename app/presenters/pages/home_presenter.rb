@@ -13,8 +13,10 @@ module Pages
       feed << Sample.from_users_watched_by(@user) if models.include?(:samples)
       feed << Beat.from_users_watched_by(@user) if models.include?(:beats)
       feed << SampleBorrow.from_users_watched_by(@user) if models.include?(:sample_borrows)
+
       feed.flatten!
     end
     memoize :feed
+
   end
 end

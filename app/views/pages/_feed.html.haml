@@ -1,0 +1,7 @@
+- @presenter.feed.each do |item|
+  - if item.is_a?(Beat)
+    = render 'feed_beat', :locals => {:beat => item}
+  - elsif item.is_a?(Sample)
+    = render 'feed_sample', :locals => {:sample => item}
+  - elsif item.is_a?(SampleBorrow)
+    = render 'feed_sample_borrow', :locals => {:sample_borrow => item}

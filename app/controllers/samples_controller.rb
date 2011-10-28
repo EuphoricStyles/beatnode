@@ -21,6 +21,6 @@ class SamplesController < ApplicationController
   end
 
   def index
-    @presenter = Samples::IndexPresenter.new(current_user)
+    @presenter = ::Samples::IndexPresenter.new(current_user)
   end
 end
