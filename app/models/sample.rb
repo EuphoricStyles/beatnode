@@ -23,8 +23,6 @@ class Sample < ActiveRecord::Base
 
   acts_as_taggable
 
-  include_in_feed
-
   def name
     @name ||= truncate(File.basename(self.audio.url), :length => 50)
   end
