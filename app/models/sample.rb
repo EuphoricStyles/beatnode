@@ -16,6 +16,9 @@ class Sample < ActiveRecord::Base
   has_many :beats, :through => :sample_uses
 
   has_many :comments, :as => :commentable
+
+  has_one :feed_event, :as => :feedable, :dependent => :destroy
+  after_save :create_feed_event
   
   validates_length_of :description, :maximum => 200, :too_long => "That description is too long!"
 

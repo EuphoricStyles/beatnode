@@ -11,6 +11,9 @@ class Beat < ActiveRecord::Base
   has_many :samples, :through => :sample_uses
 
   has_many :comments, :as => :commentable
+
+  has_one :feed_event, :as => :feedable, :dependent => :destroy
+  after_save :create_feed_event
   
   validates_presence_of :name
   validates_length_of :name, :maximum => 75, :too_long => "That name is too long!"

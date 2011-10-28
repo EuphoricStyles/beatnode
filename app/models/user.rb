@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :reverse_user_relationships, :foreign_key => 'watched_id', :class_name => 'UserRelationship', :dependent => :destroy
   has_many :watchers, :through => :reverse_user_relationships
 
+  has_many :feed_events
+
   def watch!(user)
     user_relationships.create!(:watched_id => user.id)
   end

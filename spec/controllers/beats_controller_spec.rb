@@ -3,8 +3,6 @@ require 'spec_helper'
 describe BeatsController do
   render_views
 
-  let(:beat) { mock_model(Beat) }
-
   before :each do
     @user = User.make!
     sign_in(@user)
@@ -30,6 +28,7 @@ describe BeatsController do
     context 'when beat is valid' do
       before :each do
         Beat.stub!(:new).and_return(@beat)
+        @beat.stub!(:save).and_return(true)
       end
 
       it 'redirects to show page' do

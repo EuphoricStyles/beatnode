@@ -3,8 +3,6 @@ require 'spec_helper'
 describe SamplesController do
   render_views
 
-  let(:sample) { mock_model(Sample) }
-
   before :each do
     @user = User.make!
     sign_in(@user)
@@ -30,6 +28,7 @@ describe SamplesController do
     context 'when sample is valid' do
       before :each do
         Sample.stub!(:new).and_return(@sample)
+        @sample.stub!(:save).and_return(true)
       end
 
       it 'redirects to show page' do

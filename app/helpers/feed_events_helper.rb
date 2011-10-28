@@ -1,0 +1,2 @@
+module FeedEventsHelper
+end

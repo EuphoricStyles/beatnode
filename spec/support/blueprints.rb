@@ -52,5 +52,7 @@ Comment.blueprint do
 end
 
 UserRelationship.blueprint do
-  # Attributes here
+end
+
+FeedEvent.blueprint do
 end
