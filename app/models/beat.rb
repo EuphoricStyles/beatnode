@@ -12,7 +12,7 @@ class Beat < ActiveRecord::Base
 
   has_many :comments, :as => :commentable
 
-  has_one :feed_event, :as => :feedable, :dependent => :destroy
+  has_one :feed_event, :as => :subject, :dependent => :destroy
   after_save :create_feed_event
   
   validates_presence_of :name

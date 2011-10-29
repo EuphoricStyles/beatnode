@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(:version => 20111028180741) do
 
   create_table "feed_events", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "feedable_id"
-    t.string   "feedable_type"
+    t.integer  "subject_id"
+    t.string   "subject_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "feed_events", ["feedable_id", "feedable_type"], :name => "index_feed_events_on_feedable_id_and_feedable_type", :unique => true
-  add_index "feed_events", ["feedable_id"], :name => "index_feed_events_on_feedable_id"
-  add_index "feed_events", ["feedable_type"], :name => "index_feed_events_on_feedable_type"
+  add_index "feed_events", ["subject_id", "subject_type"], :name => "index_feed_events_on_subject_id_and_subject_type", :unique => true
+  add_index "feed_events", ["subject_id"], :name => "index_feed_events_on_subject_id"
+  add_index "feed_events", ["subject_type"], :name => "index_feed_events_on_subject_type"
   add_index "feed_events", ["user_id"], :name => "index_feed_events_on_user_id"
 
   create_table "sample_borrows", :force => true do |t|

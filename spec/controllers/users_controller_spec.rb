@@ -15,6 +15,10 @@ describe UsersController do
     it 'assigns @user' do
       assigns[:user].should == @other
     end
+
+    it 'assigns @feed' do
+      assigns[:feed].should_not be_nil
+    end
   end
 
   describe 'GET index' do

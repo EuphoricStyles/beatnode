@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @samples_presenter = Samples::IndexPresenter.new(@user)
     @beats_presenter = Beats::IndexPresenter.new(@user)
+    @feed = @user.feed_events
   end
 
   def index

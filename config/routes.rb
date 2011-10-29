@@ -1,6 +1,6 @@
 Beatnode::Application.routes.draw do
 
-  get '/welcome', :to => 'pages#welcome', :as => 'welcome'
+  match '/welcome', :to => 'pages#welcome', :as => 'welcome'
 
   resources :beats
   resources :sample_borrows, :only => [ :create, :destroy ]
@@ -16,6 +16,7 @@ Beatnode::Application.routes.draw do
   end
 
   match '/users/:id', :to => 'users#show', :as => 'user'
+  match '/feed', :to => 'feed_events#index', :as => 'feed'
 
   root :to => 'pages#home'
 
