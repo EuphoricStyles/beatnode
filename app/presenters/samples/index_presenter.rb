@@ -7,7 +7,7 @@ module Samples
     end
 
     def all_samples
-      (@user.samples + @user.borrowed_samples).limit(10)
+      (@user.samples + @user.borrowed_samples)
     end
     memoize :all_samples
 

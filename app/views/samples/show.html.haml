@@ -1,7 +1,7 @@
 %header
   %h1= @sample.name
   %h2= @sample.description
-  = audio_tag(@sample.audio.path, :controls => true)
+  Audio Goes here
 #sample_borrow
   = if user_signed_in? && !current_user.borrowing?(@sample) && !current_user.own?(@sample)
     %p= render 'borrow'

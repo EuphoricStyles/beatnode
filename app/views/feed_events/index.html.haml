@@ -1,4 +1,10 @@
 #feed
   - @feed.each do |event|
     .event
-      = event.inspect
+      - case event.subject_type
+      - when 'Sample'
+        Sample uploaded
+      - when 'Beat'
+        Beat uploaded
+      - when 'SampleBorrow'
+        Sample borrowed
