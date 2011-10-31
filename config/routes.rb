@@ -16,9 +16,8 @@ Beatnode::Application.routes.draw do
   end
 
   match '/users/:id', :to => 'users#show', :as => 'user'
-  match '/feed', :to => 'feed_events#index', :as => 'feed'
 
-  root :to => 'pages#home'
+  root :to => 'feed_events#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

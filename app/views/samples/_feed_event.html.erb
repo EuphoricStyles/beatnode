@@ -1,0 +1,11 @@
+<div class='summary'>
+  <%- if sample.user == current_user %>
+    <strong>You</strong> 
+  <%- else %>
+    <%= link_to(sample.user.username, user_path(sample.user)) %>
+  <%- end %> uploaded 
+  <%= link_to sample.name, sample_path(sample) %>
+</div>
+<div class='timestamp'>
+  <%= pretty_timestamp(sample.created_at) %>
+</div>

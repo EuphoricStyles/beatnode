@@ -7,6 +7,10 @@ class FeedEvent < ActiveRecord::Base
 
   before_save :assign_user_id
 
+  def get_subject
+    self.subject_type.constantize.find(self.subject_id)
+  end
+
   private
 
   def self.watched_by(user)
@@ -16,9 +20,5 @@ class FeedEvent < ActiveRecord::Base
 
   def assign_user_id
     self.user_id ||= get_subject.user_id rescue nil
-  end
-
-  def get_subject
-    self.subject_type.constantize.find(self.subject_id)
   end
 end

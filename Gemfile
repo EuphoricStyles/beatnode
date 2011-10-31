@@ -20,7 +20,7 @@ end
 
 group :development do
   gem 'pry-rails'
-  gem 'guard'
+  gem 'guard-rspec'
   gem 'rb-inotify', :require => false
 end
 

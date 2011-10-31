@@ -1,0 +1,12 @@
+<div class='summary'>
+  <%- if sample_borrow.user == current_user %>
+    <strong>You</strong> 
+  <%- else %>
+    <%= link_to(sample_borrow.user.username, user_path(sample_borrow.user)) %>
+  <%- end %> added 
+  <%= link_to sample_borrow.sample.name, sample_path(sample_borrow.sample) %> to 
+  <%= sample_borrow.user == current_user ? "your" : "their" %> crate
+</div>
+<div class='timestamp'>
+  <%= pretty_timestamp(sample_borrow.created_at) %>
+</div>
