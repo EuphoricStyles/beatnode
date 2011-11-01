@@ -7,10 +7,6 @@ describe Sample do
     @sample = Sample.make! :user => @owner, :description => "posted by @owner"
   end
 
-  after :each do
-    @sample.remove_audio!
-  end
-
   it "has a name, description, and audio attachment" do
     @sample.name.should == 'rickyrice.mp3'
     @sample.description.should == "posted by @owner"
@@ -37,5 +33,16 @@ describe Sample do
   it "has tags" do
     @sample.tag_list = "piano, drums, bass"
     @sample.tag_list.should == %w{ piano drums bass}
+  end
+
+  describe '.sampled_by' do
+    before :each do
+      @sample2 = Sample.make!
+      @beat = Beat.make! :samples => [@sample, @sample2]
+    end
+
+    it 'returns samples sampled by a beat' do
+      Sample.sampled_by(@beat).should eq([@sample2, @sample])
+    end
   end
 end

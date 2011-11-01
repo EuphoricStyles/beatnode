@@ -26,6 +26,11 @@ class Sample < ActiveRecord::Base
 
   acts_as_taggable
 
+  def self.sampled_by(beat)
+    sample_ids = "SELECT sample_id from sample_uses WHERE beat_id = #{beat.id}"
+    where("id in (#{sample_ids})")
+  end
+
   def name
     @name ||= truncate(File.basename(self.audio.url), :length => 50)
   end
