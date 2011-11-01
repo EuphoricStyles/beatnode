@@ -2,6 +2,15 @@
   %h1= @sample.name
   %h2= @sample.description
   Audio Goes here
+
 #sample_borrow
   = if user_signed_in? && !current_user.borrowing?(@sample) && !current_user.own?(@sample)
     %p= render 'borrow'
+
+- unless @beats.empty?
+  %h3= "Beats that sample #{@sample.name}"
+  #beats
+    - @beats.each do |b|
+      = link_to(b.name, sample_path(b))
+      = audio_tag(b.audio)
+

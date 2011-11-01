@@ -3,6 +3,7 @@ class SamplesController < ApplicationController
   
   def show
     @sample = Sample.find(params[:id])
+    @beats = Beat.which_sample(@sample)
   end
 
   def new

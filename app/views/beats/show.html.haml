@@ -1,4 +1,11 @@
 %header
   %h1= @beat.name
   %h2= @beat.description
-  %audio{:src => @beat.audio.path} 
+  = audio_tag(@beat.audio)
+
+- unless @samples.empty?
+  %h3 Samples
+  #samples
+    - @samples.each do |s|
+      = link_to(s.name, sample_path(s))
+      = audio_tag(s.audio)

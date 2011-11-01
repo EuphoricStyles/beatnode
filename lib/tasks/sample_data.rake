@@ -9,6 +9,7 @@ namespace :db do
     make_users
     make_samples
     make_beats
+    use_samples
     borrow_samples
     make_user_relationships
   end
@@ -18,7 +19,7 @@ def make_users
   User.create! :username => 'alexgenco', :email => 'alexgenco@gmail.com', 
                :password => 'password', :password_confirmation => 'password'
 
-  50.times do |n|
+  20.times do |n|
     username  = "username_#{n}"
     email = Faker::Internet.email
     password  = "password"
@@ -30,7 +31,7 @@ def make_users
 end
 
 def make_samples
-  User.all(:limit => 6).each do |user|
+  User.all.each do |user|
     10.times do
       description = Faker::Lorem.sentence(5)
       user.samples.create!(:description => description, :audio => audio_file)
@@ -39,7 +40,7 @@ def make_samples
 end
 
 def make_beats
-  User.all(:limit => 6).each do |user|
+  User.all.each do |user|
     10.times do
       name = Faker::Name.name
       description = Faker::Lorem.sentence(5)
@@ -48,9 +49,16 @@ def make_beats
   end
 end
 
+def use_samples
+  Beat.all.each do |beat|
+    sample_id = rand(Sample.count)
+    beat.sample_uses.create!(:sample_id => sample_id)
+  end
+end
+
 def borrow_samples
-  User.all(:limit => 6).each do |user|
-    10.times do |i|
+  User.all.each do |user|
+    5.times do |i|
       sample = Sample.all[i]
       user.borrow!(sample)
     end
@@ -60,8 +68,8 @@ end
 def make_user_relationships
   users = User.all
   user  = users.first
-  following = users[1..50]
-  followers = users[3..40]
-  following.each { |followed| user.watch!(followed) }
-  followers.each { |follower| follower.watch!(user) }
+  watching = users[1..50]
+  watchers = users[3..40]
+  watching.each { |watched| user.watch!(watched) }
+  watchers.each { |watcher| watcher.watch!(user) }
 end

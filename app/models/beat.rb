@@ -22,4 +22,9 @@ class Beat < ActiveRecord::Base
   validates :audio, :presence => true, :file_size => { :maximum => 10.megabytes }
 
   acts_as_taggable
+
+  def self.which_sample(sample)
+    beat_ids = "SELECT beat_id FROM sample_uses WHERE sample_id = #{sample.id}"
+    where("id in (#{beat_ids})")
+  end
 end

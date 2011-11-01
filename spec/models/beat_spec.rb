@@ -6,10 +6,6 @@ describe Beat do
     @beat = Beat.make! :user => @user, :name => 'some beat', :description => 'beat beat beat'
   end
 
-  after :each do
-    @beat.remove_audio!
-  end
-
   it "has a name, description, and audio attachment" do
     @beat.name.should == 'some beat'
     @beat.description.should == 'beat beat beat'
@@ -41,5 +37,16 @@ describe Beat do
   it "has tags" do
     @beat.tag_list = "piano, drums, bass"
     @beat.tag_list.should == %w{ piano drums bass}
+  end
+
+  describe '.which_sample' do
+    before :each do
+      @sample = Sample.make!
+      @use = @beat.sample_uses.create!(:sample_id => @sample.id)
+    end
+
+    it 'returns all beats that use a certain sample' do
+      Beat.which_sample(@sample).should include(@beat)
+    end
   end
 end

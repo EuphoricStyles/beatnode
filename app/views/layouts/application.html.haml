@@ -11,10 +11,9 @@
   = csrf_meta_tags
 %body
   .container
-    %section.header
-      = render 'shared/header'
-      = render 'shared/user_nav' if user_signed_in?
-      = render 'shared/flash_messages'
+    = render 'shared/header'
+    = render 'shared/user_nav' if user_signed_in?
+    = render 'shared/flash_messages'
 
     %section.content
       = yield
