@@ -86,6 +86,9 @@ body a {
   text-decoration: none;
 }
 
+.site-header {
+}
+
 div#logo h1 {
   font-family: 'JUICELightRegular';
   font-size: 8em;
