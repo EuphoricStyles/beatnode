@@ -10,14 +10,14 @@
   = javascript_include_tag 'application'
   = csrf_meta_tags
 %body
+  = render 'shared/header'
   .container
-    .site-header
-      = render 'shared/header'
-      = render 'shared/user_nav' if user_signed_in?
-
     = render 'shared/flash_messages'
 
-    %section.content
+    %section.content.span-16.last
       = yield
+    %section.user_info
+      = render 'shared/user_info', :samples_presenter => Samples::IndexPresenter.new(current_user),
+                                   :beats_presenter => Beats::IndexPresenter.new(current_user)
 
-    = debug(params) if Rails.env.development?
+  = debug(params) if Rails.env.development?

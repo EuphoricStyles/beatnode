@@ -6,95 +6,16 @@
  *= require_tree . 
 */
 
-@font-face {
-    font-family: 'JUICELightRegular';
-    src: url('JUICE_Light-webfont.eot');
-    src: url('JUICE_Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('JUICE_Light-webfont.woff') format('woff'),
-         url('JUICE_Light-webfont.ttf') format('truetype'),
-         url('JUICE_Light-webfont.svg#JUICELightRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'JUICELightItalic';
-    src: url('JUICE_Light_Italic-webfont.eot');
-    src: url('JUICE_Light_Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('JUICE_Light_Italic-webfont.woff') format('woff'),
-         url('JUICE_Light_Italic-webfont.ttf') format('truetype'),
-         url('JUICE_Light_Italic-webfont.svg#JUICELightItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'JUICERegular';
-    src: url('JUICE_Regular-webfont.eot');
-    src: url('JUICE_Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('JUICE_Regular-webfont.woff') format('woff'),
-         url('JUICE_Regular-webfont.ttf') format('truetype'),
-         url('JUICE_Regular-webfont.svg#JUICERegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'JUICEItalic';
-    src: url('JUICE_Italic-webfont.eot');
-    src: url('JUICE_Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('JUICE_Italic-webfont.woff') format('woff'),
-         url('JUICE_Italic-webfont.ttf') format('truetype'),
-         url('JUICE_Italic-webfont.svg#JUICEItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'JUICEBold';
-    src: url('JUICE_Bold-webfont.eot');
-    src: url('JUICE_Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('JUICE_Bold-webfont.woff') format('woff'),
-         url('JUICE_Bold-webfont.ttf') format('truetype'),
-         url('JUICE_Bold-webfont.svg#JUICEBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'JUICEBoldItalicRegular';
-    src: url('JUICE_Bold_Italic-webfont.eot');
-    src: url('JUICE_Bold_Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('JUICE_Bold_Italic-webfont.woff') format('woff'),
-         url('JUICE_Bold_Italic-webfont.ttf') format('truetype'),
-         url('JUICE_Bold_Italic-webfont.svg#JUICEBoldItalicRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 body {
+  background-color: #181818;
   background-image: url('dark_mosaic.png');
+  font-family: 'LaneNarrowRegular';
+}
+
+.container {
+  padding-top: 140px;
 }
 
 body a {
   text-decoration: none;
 }
-
-.site-header {
-}
-
-div#logo h1 {
-  font-family: 'JUICELightRegular';
-  font-size: 8em;
-}
-
-nav ul li {
-  display: inline; 
-}
-

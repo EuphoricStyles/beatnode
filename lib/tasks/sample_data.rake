@@ -19,7 +19,7 @@ def make_users
   User.create! :username => 'alexgenco', :email => 'alexgenco@gmail.com', 
                :password => 'password', :password_confirmation => 'password'
 
-  20.times do |n|
+  10.times do |n|
     username  = "username_#{n}"
     email = Faker::Internet.email
     password  = "password"
@@ -32,7 +32,7 @@ end
 
 def make_samples
   User.all.each do |user|
-    10.times do
+    3.times do
       description = Faker::Lorem.sentence(5)
       user.samples.create!(:description => description, :audio => audio_file)
     end
@@ -41,7 +41,7 @@ end
 
 def make_beats
   User.all.each do |user|
-    10.times do
+    5.times do
       name = Faker::Name.name
       description = Faker::Lorem.sentence(5)
       user.beats.create!(:name => name, :description => description, :audio => audio_file)
@@ -68,8 +68,8 @@ end
 def make_user_relationships
   users = User.all
   user  = users.first
-  watching = users[1..50]
-  watchers = users[3..40]
+  watching = users[1..10]
+  watchers = users[3..20]
   watching.each { |watched| user.watch!(watched) }
   watchers.each { |watcher| watcher.watch!(user) }
 end

@@ -7,38 +7,13 @@
   - unless current_user == @user
     = render 'watch_form'
 
-%section
-  #user_info
-    #samples
-      %header 
-        %h1 Samples
-
-      #uploaded_samples
-        %h2 Uploaded
-        %ul
-          - @samples_presenter.uploaded_samples.each do |s|
-            %li.sample= link_to s.name, sample_path(s)
-
-      #borrowed_samples
-        %h2 Grabbed
-        %ul
-          - @samples_presenter.borrowed_samples.each do |s|
-            %li.sample= link_to s.name, sample_path(s)
-
-    #beats
-      %header
-        %h1 Beats
-      %ul
-        - @beats_presenter.all_beats.each do |b|
-          %li.beat= link_to b.name, beat_path(b)
-
 #feed
   - @user.feed_events.each do |e|
     .event
       - case e.subject_type
       - when 'Sample'
-        = render 'samples/event', :sample => Sample.find(e.subject_id)
+        = render 'samples/feed_event', :sample => Sample.find(e.subject_id)
       - when 'Beat'
-        = render 'beats/event', :beat => Beat.find(e.subject_id)
+        = render 'beats/feed_event', :beat => Beat.find(e.subject_id)
       - when 'SampleBorrow'
-        = render 'sample_borrows/event', :sample_borrow => SampleBorrow.find(e.subject_id)
+        = render 'sample_borrows/feed_event', :sample_borrow => SampleBorrow.find(e.subject_id)
