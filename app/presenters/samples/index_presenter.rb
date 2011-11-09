@@ -7,7 +7,9 @@ module Samples
     end
 
     def all_samples
-      (@user.samples + @user.borrowed_samples)
+      sample_ids = %(SELECT id FROM samples WHERE user_id = :user_id)
+      borrow_ids = %(SELECT sample_id FROM sample_borrows WHERE user_id = :user_id)
+      Sample.where("id IN (#{sample_ids}) OR id IN (#{borrow_ids})", :user_id => @user.id).limit(10)
     end
     memoize :all_samples
 

@@ -11,13 +11,13 @@
   = csrf_meta_tags
 %body
   = render 'shared/header'
-  .container
-    = render 'shared/flash_messages'
 
-    %section.content.span-16.last
+  .container
+    %section.content.span-16
+      = render 'shared/flash_messages'
       = yield
-    %section.user_info
+    %section.user_info.span-8
       = render 'shared/user_info', :samples_presenter => Samples::IndexPresenter.new(current_user),
-                                   :beats_presenter => Beats::IndexPresenter.new(current_user)
+                                   :beats_presenter => Beats::IndexPresenter.new(current_user) if user_signed_in?
 
   = debug(params) if Rails.env.development?

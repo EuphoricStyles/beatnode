@@ -2,10 +2,11 @@
   %header.logo.span-24.last
     = link_to "BeatNode", root_path
 
-  %nav.span-24.last
-    %ul
-      %li= link_to "Home", root_path, :class => 'span-4'
-      %li= link_to "Profile", user_path(current_user), :class => 'span-4'
-      %li= link_to "Samples", samples_path, :class => 'span-4'
-      %li= link_to "Beats", beats_path, :class => 'span-4'
-      %li= link_to "Sign out", sign_out_path, :class => 'span-4'
+  - if user_signed_in?
+    %nav.span-24.last
+      %ul
+        %li= link_to "Home", root_path, :class => 'span-4'
+        %li= link_to "Profile", user_path(current_user), :class => 'span-4'
+        %li= link_to "Samples", samples_path, :class => 'span-4'
+        %li= link_to "Beats", beats_path, :class => 'span-4'
+        %li= link_to "Sign out", sign_out_path, :class => 'span-4'

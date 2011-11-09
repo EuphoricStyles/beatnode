@@ -1,20 +1,12 @@
-#samples
-  %h1 Samples
-
-  #uploaded_samples
-    %h2 Uploaded
-    %ul
-      - samples_presenter.uploaded_samples.each do |s|
-        %li.sample= link_to s.name, sample_path(s)
-
-  #borrowed_samples
-    %h2 Grabbed
-    %ul
-      - samples_presenter.borrowed_samples.each do |s|
-        %li.sample= link_to s.name, sample_path(s)
+#crate
+  %h1 Your crate
+  = link_to "Upload sample", new_sample_path
+  - samples_presenter.all_samples.each do |s|
+    %li.sample= link_to s.name, sample_path(s)
 
 #beats
-  %h1 Beats
+  %h1 Your beats
+  = link_to "Upload beat", new_beat_path
   %ul
     - beats_presenter.all_beats.each do |b|
       %li.beat= link_to b.name, beat_path(b)

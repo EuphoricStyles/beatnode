@@ -3,7 +3,7 @@ class BeatsController < ApplicationController
 
   def show
     @beat = Beat.find(params[:id])
-    @samples = @beat.samples.limit(10)
+    @samples = @beat.samples.limit(20)
   end
 
   def new
