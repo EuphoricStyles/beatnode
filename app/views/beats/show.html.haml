@@ -1,11 +1,11 @@
 %header
   %h1= @beat.name
   %h2= @beat.description
-  = audio_tag(@beat.audio)
+  = audio_tag(@beat.audio_component.audio)
 
 - unless @samples.empty?
   %h3 Samples
   #samples
     - @samples.each do |s|
       = link_to(s.name, sample_path(s))
-      = audio_tag(s.audio)
+      = audio_tag(s.audio_component.audio)

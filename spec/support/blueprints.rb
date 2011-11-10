@@ -33,11 +33,15 @@ end
 Beat.blueprint do
   name { valid_name(0..75) }
   description { valid_paragraph(0..200) }
-  audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
+  audio_component
 end
 
 Sample.blueprint do
   description { valid_paragraph(0..200) }
+  audio_component
+end
+
+AudioComponent.blueprint do
   audio { open("#{Rails.root}/data/audio/rickyrice.mp3") }
 end
 

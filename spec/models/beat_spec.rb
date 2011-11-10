@@ -6,22 +6,8 @@ describe Beat do
     @beat = Beat.make! :user => @user, :name => 'some beat', :description => 'beat beat beat'
   end
 
-  it "has a name, description, and audio attachment" do
-    @beat.name.should == 'some beat'
-    @beat.description.should == 'beat beat beat'
-    @beat.audio.should_not be_nil
-  end
-
   it "has a creator" do
     @beat.user.should == @user
-  end
-
-  it "rejects large file sizes" do
-    expect { Beat.make!(:audio => open("#{Rails.root}/data/audio/big_audio.mp3")) }.to raise_error(ActiveRecord::RecordInvalid)
-  end
-
-  it "rejects invalid extensions" do
-    expect { Beat.make!(:audio => open("#{Rails.root}/data/audio/big_audio.m4a")) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
   it "validates description length" do

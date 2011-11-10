@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028180741) do
+ActiveRecord::Schema.define(:version => 20111109234238) do
+
+  create_table "audio_components", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "audio"
+  end
+
+  add_index "audio_components", ["owner_id", "owner_type"], :name => "index_audio_components_on_owner_id_and_owner_type", :unique => true
+  add_index "audio_components", ["owner_id"], :name => "index_audio_components_on_owner_id"
 
   create_table "beats", :force => true do |t|
     t.string   "name",        :null => false
@@ -18,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20111028180741) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "audio"
   end
 
   add_index "beats", ["user_id", "created_at"], :name => "index_beats_on_user_id_and_created_at"
@@ -73,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20111028180741) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "audio"
   end
 
   add_index "samples", ["user_id", "created_at"], :name => "index_samples_on_user_id_and_created_at"

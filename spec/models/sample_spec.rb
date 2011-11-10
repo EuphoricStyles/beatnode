@@ -7,22 +7,8 @@ describe Sample do
     @sample = Sample.make! :user => @owner, :description => "posted by @owner"
   end
 
-  it "has a name, description, and audio attachment" do
-    @sample.name.should == 'rickyrice.mp3'
-    @sample.description.should == "posted by @owner"
-    @sample.audio.should_not be_nil
-  end
-
   it "has an owner" do
     @sample.user.should == @owner
-  end
-
-  it "rejects large file sizes" do
-    expect { Beat.make!(:audio => open("#{Rails.root}/data/audio/big_audio.mp3")) }.to raise_error(ActiveRecord::RecordInvalid)
-  end
-
-  it "rejects invalid extensions" do
-    expect { Beat.make!(:audio => open("#{Rails.root}/data/audio/big_audio.m4a")) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
   it "validates description length" do

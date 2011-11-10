@@ -4,10 +4,7 @@
 = form_for @sample do |f|
   = render 'shared/error_messages', :object => f.object
 
-  .field
-    = f.label :audio, :class => 'large'
-    %br
-    = f.file_field :audio
+  = render 'shared/audio_form', :object => f.object
 
   .field
     = f.label :description, :class => 'large'

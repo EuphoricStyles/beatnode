@@ -1,11 +1,10 @@
 class Sample < ActiveRecord::Base
-  include ActionView::Helpers::TextHelper
-
   default_scope order('created_at desc')
 
   attr_accessible :description, :audio
 
-  mount_uploader :audio, AudioUploader
+  #mount_uploader :audio, AudioUploader
+  has_one :audio_component, :as => :owner
 
   belongs_to :user
 
@@ -22,7 +21,7 @@ class Sample < ActiveRecord::Base
   
   validates_length_of :description, :maximum => 200, :too_long => "That description is too long!"
 
-  validates :audio, :presence => true, :file_size => { :maximum => 5.megabytes }
+  #validates :audio, :presence => true, :file_size => { :maximum => 5.megabytes }
 
   acts_as_taggable
 
@@ -32,6 +31,6 @@ class Sample < ActiveRecord::Base
   end
 
   def name
-    @name ||= truncate(File.basename(self.audio.url), :length => 50)
+    audio_component.name
   end
 end

@@ -1,0 +1,5 @@
+= form_for object.audio_component.build(:owner_id => object.id, :owner_type => object.class.to_s) do |ac|
+  .field
+    = ac.label :audio
+    %br
+    = ac.file_field :audio

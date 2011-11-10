@@ -30,11 +30,16 @@ def make_users
   end
 end
 
+def make_audio_component(owner)
+  AudioComponent.create!(:audio => audio_file, :owner_id => owner.id, :owner_type => owner.class.to_s)
+end
+
 def make_samples
   User.all.each do |user|
     3.times do
       description = Faker::Lorem.sentence(5)
-      user.samples.create!(:description => description, :audio => audio_file)
+      s = user.samples.create!(:description => description)
+      s.audio_component = make_audio_component(s)
     end
   end
 end
@@ -44,7 +49,8 @@ def make_beats
     5.times do
       name = Faker::Name.name
       description = Faker::Lorem.sentence(5)
-      user.beats.create!(:name => name, :description => description, :audio => audio_file)
+      b = user.beats.create!(:name => name, :description => description)
+      b.audio_component = make_audio_component(b)
     end
   end
 end
