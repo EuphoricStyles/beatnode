@@ -3,8 +3,8 @@ class Beat < ActiveRecord::Base
 
   default_scope order('created_at desc')
 
-  #mount_uploader :audio, AudioUploader
-  has_one :audio_component, :as => :owner
+  has_one :audio_component, :as => :owner, :dependent => :destroy
+  accepts_nested_attributes_for :audio_component
 
   belongs_to :user
 
@@ -19,8 +19,6 @@ class Beat < ActiveRecord::Base
   validates_presence_of :name
   validates_length_of :name, :maximum => 75, :too_long => "That name is too long!"
   validates_length_of :description, :maximum => 200, :too_long => "That description is too long!"
-
-  #validates :audio, :presence => true, :file_size => { :maximum => 10.megabytes }
 
   acts_as_taggable
 

@@ -4,7 +4,8 @@ class Sample < ActiveRecord::Base
   attr_accessible :description, :audio
 
   #mount_uploader :audio, AudioUploader
-  has_one :audio_component, :as => :owner
+  has_one :audio_component, :as => :owner, :dependent => :destroy
+  accepts_nested_attributes_for :audio_component
 
   belongs_to :user
 

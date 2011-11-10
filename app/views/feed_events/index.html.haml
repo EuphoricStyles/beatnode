@@ -2,4 +2,4 @@
   - @feed.each do |event|
     .event
       - name = ActiveSupport::Inflector.underscore(event.subject_type)
-      = render "#{name}s/feed_event", :"#{name}" => event.get_subject
+      = render "#{name}s/feed_event", :object => event.get_subject

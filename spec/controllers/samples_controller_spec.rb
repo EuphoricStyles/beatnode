@@ -44,7 +44,7 @@ describe SamplesController do
 
     context 'when beat fails to save' do
       before :each do
-        @invalid = { :name => '', :description => '', :audio_component => nil }
+        @invalid = { :name => '', :description => '' }
       end
 
       it 'renders the new template' do

@@ -3,12 +3,11 @@
 
 = form_for @sample do |f|
   = render 'shared/error_messages', :object => f.object
-
-  = render 'shared/audio_form', :object => f.object
+  = render 'shared/audio_field', :form => f
 
   .field
-    = f.label :description, :class => 'large'
+    = f.label :description
     %br
-    = f.text_area :description, :placeholder => 'Sample description...'
+    = f.text_area :description
 
   .actions= f.submit 'Upload'

@@ -3,7 +3,8 @@
 
 = form_for @beat do |f|
   = render 'shared/error_messages', :object => f.object
-
+  = render 'shared/audio_field', :form => f
+  
   .field
     = f.label :name
     %br
@@ -13,10 +14,5 @@
     = f.label :description
     %br
     = f.text_area :description
-
-  .field
-    = f.label :audio
-    %br
-    = f.file_field :audio
 
   .actions= f.submit 'Upload'
