@@ -32,6 +32,6 @@ class Sample < ActiveRecord::Base
   end
 
   def name
-    audio_component.name
+    audio_component.display_name
   end
 end

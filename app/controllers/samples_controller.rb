@@ -24,4 +24,9 @@ class SamplesController < ApplicationController
   def index
     @presenter = ::Samples::IndexPresenter.new(current_user)
   end
+
+  def download
+    @sample = Sample.find(params[:id])
+    send_file(@sample.audio_component.path, :filetype => @sample.audio_component.filetype)
+  end
 end

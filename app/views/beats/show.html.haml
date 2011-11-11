@@ -2,6 +2,7 @@
   %h1= @beat.name
   %h2= @beat.description
   = audio_tag(@beat.audio_component.audio)
+  = link_to("Download", beat_download_path(@beat))
 
 - unless @samples.empty?
   %h3 Samples

@@ -24,4 +24,9 @@ class BeatsController < ApplicationController
   def index
     @presenter = ::Beats::IndexPresenter.new(current_user)
   end
+
+  def download
+    @beat = Beat.find(params[:id])
+    send_file(@beat.audio_component.path, :filetype => @beat.audio_component.filetype)
+  end
 end

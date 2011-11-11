@@ -25,15 +25,18 @@ describe SamplesController do
   end
 
   describe 'POST create' do
+    before :each do
+      Sample.stub!(:new).and_return(@sample)
+    end
+
     context 'when sample is valid' do
       before :each do
-        Sample.stub!(:new).and_return(@sample)
         @sample.stub!(:save).and_return(true)
       end
 
       it 'redirects to show page' do
         post :create
-        response.should redirect_to(:action => :show, :id => @sample)
+        response.should redirect_to(:action => :show, :id => @sample.id)
       end
 
       it 'sets flash[:success]' do
@@ -42,9 +45,9 @@ describe SamplesController do
       end
     end
 
-    context 'when beat fails to save' do
+    context 'when sample fails to save' do
       before :each do
-        @invalid = { :name => '', :description => '' }
+        @sample.stub!(:save).and_return(false)
       end
 
       it 'renders the new template' do
@@ -55,8 +58,8 @@ describe SamplesController do
   end
 
   describe 'GET show' do
-    it 'assigns @beat' do
-      get :show, :id => @sample
+    it 'assigns @sample' do
+      get :show, :id => @sample.id
       assigns[:sample].should be_eql(@sample)
     end
   end

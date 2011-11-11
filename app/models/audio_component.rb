@@ -10,7 +10,15 @@ class AudioComponent < ActiveRecord::Base
 
   validates :audio, :presence => true, :file_size => { :maximum => 10.megabytes }
 
-  def name
-    @name ||= truncate(File.basename(self.audio.url), :length => 50)
+  def basename
+    @basename ||= File.basename(self.audio.url)
+  end
+
+  def display_name
+    @display_name ||= truncate(basename, :length => 50)
+  end
+
+  def filetype
+    MIME::Types.type_for(basename)
   end
 end

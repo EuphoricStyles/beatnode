@@ -14,7 +14,9 @@ Beatnode::Application.routes.draw do
     get '/sign_up', :to => 'devise/registrations#new', :as => 'sign_up'
   end
 
-  match '/users/:id', :to => 'users#show', :as => 'user'
+  get '/users/:id', :to => 'users#show', :as => 'user'
+  get '/samples/download/:id', :to => 'samples#download', :as => 'sample_download'
+  get '/beats/download/:id', :to => 'beats#download', :as => 'beat_download'
 
   root :to => 'feed_events#index'
 
