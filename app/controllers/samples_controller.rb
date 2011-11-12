@@ -27,6 +27,6 @@ class SamplesController < ApplicationController
 
   def download
     @sample = Sample.find(params[:id])
-    send_file(@sample.audio_component.path, :filetype => @sample.audio_component.filetype)
+    send_file(@sample.audio_component.audio.path, :filetype => @sample.audio_component.filetype)
   end
 end

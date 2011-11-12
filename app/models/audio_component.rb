@@ -3,22 +3,15 @@ class AudioComponent < ActiveRecord::Base
 
   belongs_to :owner, :polymorphic => true
 
-  #validates_presence_of :owner_id
-  #validates_presence_of :owner_type
-
   mount_uploader :audio, AudioUploader
 
   validates :audio, :presence => true, :file_size => { :maximum => 10.megabytes }
 
-  def basename
-    @basename ||= File.basename(self.audio.url)
-  end
-
   def display_name
-    @display_name ||= truncate(basename, :length => 50)
+    @display_name ||= truncate(File.basename(audio.path), :length => 50)
   end
 
-  def filetype
-    MIME::Types.type_for(basename)
+  def content_type
+    @content_type ||= MIME::Types.type_for(audio.path).first.to_s
   end
 end

@@ -41,10 +41,20 @@ RSpec.configure do |config|
   end
 
   #clean up file uploads after tests
-  config.after(:all) do
+  config.after(:suite) do
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test/*"])
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp/*"])
     end
+  end
+
+  config.before(:suite) do
+    @sign_in_user = lambda { 
+      @user = User.make!
+      visit sign_in_path
+      fill_in 'Email', :with => @user.email
+      fill_in 'Password', :with => @user.password
+      click_button 'Sign in'
+    }
   end
 end

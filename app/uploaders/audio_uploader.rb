@@ -4,7 +4,7 @@ require 'carrierwave/processing/mime_types'
 class AudioUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
 
-  process :set_content_type
+  process :set_content_type => true
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
@@ -49,5 +49,4 @@ class AudioUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

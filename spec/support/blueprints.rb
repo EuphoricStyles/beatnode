@@ -49,6 +49,8 @@ SampleUse.blueprint do
 end
 
 SampleBorrow.blueprint do
+  user_id {User.make!.id}
+  sample_id {Sample.make!.id}
 end
 
 Comment.blueprint do

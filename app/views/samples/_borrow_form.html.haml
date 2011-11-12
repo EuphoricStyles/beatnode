@@ -1,0 +1,5 @@
+#borrow_form
+  - if current_user.borrowing?(@sample)
+    = render 'unborrow'
+  - else
+    = render 'borrow'

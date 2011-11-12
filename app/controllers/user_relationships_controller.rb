@@ -1,4 +1,6 @@
 class UserRelationshipsController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     @user = User.find(params[:user_relationship][:watched_id])
     current_user.watch!(@user)

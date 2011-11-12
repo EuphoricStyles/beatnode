@@ -1,0 +1,2 @@
+= form_for current_user.sample_borrows.find_by_sample_id(@sample), :html => {:method => :delete}, :remote => true do |f|
+  #unborrow_button= f.submit "Remove from crate", :class => 'button negative'
